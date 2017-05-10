@@ -1,0 +1,50 @@
+<resources>
+    <string name="splash">Caissa</string>
+    <string name="app_name">Tablero</string>
+    <string name="tipoEjercicios">Menu de Ejercicios</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="action_settings">Menu</string>
+    <string name="menu_configuracion">Configuracion</string>
+    <string name="ejercicio">Ejercicio</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="categoria1">TABLERO</string>
+    <string name="categoria2">VIBRACION/SONIDO</string>
+    <string name="coordenadas_titulo">Mostrar Coordenadas</string>
+    <string name="coordenadas_descripcion">Mostrar coordenadas del tablero [a,h] [1-8]</string>
+    <string name="guia_titulo">Mostrar Guia</string>
+    <string name="guia_descripcion">Mostrar Guia</string>
+    <string name="sonido_titulo">Sonido</string>
+    <string name="sonido_descripcion">Permite activar o desactivar el sonido</string>
+    <string name="default_summary">Elige el color del tablero</string>
+
+
+    <string-array name="iconName">
+        <item>Azul Claro</item>
+        <item>Amarillo</item>
+        <item>Marrón</item>
+        <item>Azul Oscuro</item>
+        <item>Azul Turquesa</item>
+        <item>Morado</item>
+        <item>Naranja</item>
+        <item>Rosa</item>
+    </string-array>
+
+    <string-array name="iconFile">
+        <item>ic_azul_claro</item>
+        <item>ic_amarillo</item>
+        <item>ic_marron</item>
+        <item>ic_azul_oscuro</item>
+        <item>ic_azul_turquesa</item>
+        <item>ic_morado</item>
+        <item>ic_naranja</item>
+        <item>ic_rosa</item>
+    </string-array>
+
+
+    <string name="icon_default">ic_marron</string>
+
+    <string name="custom_icon_key">tableroColores</string>
+    <string name="icon_label">Color tablero</string>
+
+</resources>
+

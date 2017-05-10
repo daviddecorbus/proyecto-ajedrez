@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceScreen
+        android:key="configuración_ajedrez"
+        android:summary=""
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/menu_configuracion" >
+        <PreferenceCategory android:title="@string/categoria1">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="coordenadas"
+                android:summary="@string/coordenadas_descripcion"
+                android:title="@string/coordenadas_titulo" />
+
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="guia"
+                android:summary="@string/guia_descripcion"
+                android:title="@string/guia_titulo" />
+
+
+            <com.telefonica.first.tableroprueba.IconPickerPreference
+                android:entries="@array/iconName"
+                android:entryValues="@array/iconFile"
+                android:key="@string/custom_icon_key"
+                android:layout="@layout/icon_item_preference"
+                android:title="@string/icon_label"
+                android:summary="Selecciona un Color"
+                custom:iconFile="@string/icon_default" />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory android:title="@string/categoria2">
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="sonifo"
+                android:summary="@string/sonido_descripcion"
+                android:title="@string/sonido_titulo" />
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="informacion"
+        android:summary=""
+        android:icon="@drawable/ic_settings_help"
+        android:title="@string/ayuda" />
+</PreferenceScreen>
