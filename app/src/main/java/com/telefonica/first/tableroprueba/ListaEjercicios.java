@@ -1,11 +1,17 @@
 package com.telefonica.first.tableroprueba;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,76 +21,252 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
 public class ListaEjercicios extends AppCompatActivity {
     ListView listaEjercicios;
+    ProgressDialog procesoEspera;
+    AdaptadorEjercicios adaptadorEjercicios;
+    Ejercicio [] ejercicios;
+    Ejercicio [] ejercicios_usuario;
+    String tipo;
+    String nivel;
+    String usuario ="beatrix";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_ejercicios); //Carga el Layout
         Bundle bundle = getIntent().getExtras();
         //Recuperamos el tipo y el nivel
-        String tipo = bundle.getString("tipo");
-        String nivel = bundle.getString("nivel");
+        tipo = bundle.getString("tipo");
+        nivel = bundle.getString("nivel");
+        if(tipo.split(" ").length >=2){
+           tipo = tipo.replaceAll(" ","-");
+
+        }
         listaEjercicios =(ListView)this.findViewById(R.id.listaEjercicios);
-        ComunicacionTask com=new ComunicacionTask();
-        com.execute("");
+        procesoEspera =  new ProgressDialog(ListaEjercicios.this);
+        procesoEspera.setMessage("Cargando Ejercicios...");
+        procesoEspera.setTitle("Por favor, espera");
+        if(hayConexion()){
+            ComunicacionTask com = new ComunicacionTask();
+            String parametro = "tipo=" + tipo + "&nivel=" + nivel;
+            com.execute("http://caissamaister.esy.es/peticionEjercicios.php",parametro);
+        }
+        else {
+            Toast.makeText(this, "No se ha podido realizar la búsqueda, comprueba que tienes conectividad", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        listaEjercicios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Ejercicio ejercicioActual = ejercicios[position];
+                Intent i = new Intent(ListaEjercicios.this,MainActivity.class);
+                i.putExtra("ejercicio",ejercicioActual);
+                 startActivity(i);
+            }
+        });
     }
+
+    private boolean hayConexion() {
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
+            else return false;
+        } else
+            return false;
+    }
+
     private class ComunicacionTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
             String cadenaJson="";
             try{
-                URL url=new URL(params[0]);
+                //monta la url con la dirección y parámetro de envío
+                // URL url=new URL(params[0]+"?json="+params[1]);
+                URL url=new URL(params[0]+"?"+params[1]);
+                System.out.println("URL: " + url);
                 URLConnection con=url.openConnection();
                 //recuperacion de la respuesta JSON
                 String s;
                 InputStream is=con.getInputStream();
-                //utilizamos UTF-8 para que interprete
-                //correctamente las ñ y acentos
-                BufferedReader bf=new BufferedReader(		new InputStreamReader(is, Charset.forName("UTF-8")));
+                //utilizamos UTF-8 para que interprete correctamente las ñ y acentos
+                BufferedReader bf=new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8")));
                 while((s=bf.readLine())!=null){
                     cadenaJson+=s;
                 }
+
             }
             catch(IOException ex){
                 ex.printStackTrace();
             }
-
             return cadenaJson;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            procesoEspera.show();
         }
 
         @Override
         protected void onPostExecute(String result) {
-            String[] datosCiudad=null;
+            procesoEspera.dismiss();
+            int contador = 1;
             try{
                 //creamos un array JSON a partir de la cadena recibida
                 JSONArray jarray=new JSONArray(result);
                 //creamos el array de String con el tamaño
                 //del array JSON
-                datosCiudad=new String[jarray.length()];
+                ejercicios = new Ejercicio[jarray.length()];
                 for(int i=0;i<jarray.length();i++){
                     JSONObject job=jarray.getJSONObject(i);
+                    int cantidad_movimientos =job.getInt("cantidad_movimientos");
+                    String color = job.getString("color_inicial");
+                    String movimientos = job.getString("movimientos");
+                    String tablero = job.getString("tablero");
+                    //String estado = job.getString("estado");
 
-                    int habitantes=job.getInt("Centro")+			job.getInt("Norte")+			job.getInt("Urbanizaciones");
-                    datosCiudad[i]=job.getString("Año")+			" - "+habitantes;
+                    String texto = job.getString("descripcion");
+                    int id = job.getInt("id");
+                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,"sin empezar");
+                    contador++;
                 }
-                cargarLista(datosCiudad);
+                ComunicacionTask2 com = new ComunicacionTask2();
+                String parametro = "tipo=" + tipo + "&nivel=" + nivel + "&usuario=" + usuario;
+                com.execute("http://caissamaister.esy.es/peticionEjercicios2.php",parametro);
             }
             catch(JSONException ex){
                 ex.printStackTrace();
             }
         }
-        private void cargarLista(String[] datos){
+
+
+        private String[][] convertirTablero (String[] tablero){
+            String [] [] temp = new String[8][8];
+            int cantidad=0;
+
+            for(int i=0;i<8;i++)
+            {
+                for(int j=0;j<8;j++)
+                {
+                    if(cantidad==tablero.length) break;
+                    temp[i][j]=tablero[cantidad];
+                    cantidad++;
+                }
+            }
+            return  temp;
+        }
+    }
+    private class ComunicacionTask2 extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String cadenaJson="";
+            try{
+                //monta la url con la dirección y parámetro de envío
+                // URL url=new URL(params[0]+"?json="+params[1]);
+                URL url=new URL(params[0]+"?"+params[1]);
+                System.out.println("URL: " + url);
+                URLConnection con=url.openConnection();
+                //recuperacion de la respuesta JSON
+                String s;
+                InputStream is=con.getInputStream();
+                //utilizamos UTF-8 para que interprete correctamente las ñ y acentos
+                BufferedReader bf=new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8")));
+                while((s=bf.readLine())!=null){
+                    cadenaJson+=s;
+                }
+
+            }
+            catch(IOException ex){
+                ex.printStackTrace();
+            }
+            return cadenaJson;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            procesoEspera.show();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            procesoEspera.dismiss();
+            int contador = 1;
+            try{
+                //creamos un array JSON a partir de la cadena recibida
+                JSONArray jarray=new JSONArray(result);
+                //creamos el array de String con el tamaño
+                //del array JSON
+                ejercicios_usuario = new Ejercicio[jarray.length()];
+                for(int i=0;i<jarray.length();i++){
+                    JSONObject job=jarray.getJSONObject(i);
+                    int cantidad_movimientos =job.getInt("cantidad_movimientos");
+                    String color = job.getString("color_inicial");
+                    String movimientos = job.getString("movimientos");
+                    String tablero = job.getString("tablero");
+                    String estado = job.getString("estado");
+                    String texto = job.getString("descripcion");
+                    int id = job.getInt("id");
+                    ejercicios_usuario[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,estado);
+                    contador++;
+                }
+
+                cargarLista();
+            }
+            catch(JSONException ex){
+                ex.printStackTrace();
+            }
+        }
+        private void cargarLista(){
+            for (int i = 0; i < ejercicios_usuario.length;i++) {
+                int id = ejercicios_usuario[i].getId();
+                String estado = ejercicios_usuario[i].getEstado();
+                buscar(id,estado);
+            }
             //creamos un arrayadapter con los datos del array
             // y lo asignamos al ListView
-            ArrayAdapter<String> adp=new 	ArrayAdapter<String>(ListaEjercicios.this, 	android.R.layout.simple_list_item_1,datos);
-           // lvCiudades.setAdapter(adp);
-            listaEjercicios.setAdapter(adp);
+            adaptadorEjercicios =new AdaptadorEjercicios(ListaEjercicios.this,R.layout.lista_ejercicios,ejercicios);
+            listaEjercicios.setAdapter(adaptadorEjercicios);
+        }
+
+        private void buscar(int id,String estado){
+            for (int i = 0; i < ejercicios.length;i++){
+                if(id == ejercicios[i].getId()){
+                    ejercicios[i].setEstado(estado);
+                }
+            }
+        }
+
+        private String[][] convertirTablero (String[] tablero){
+            String [] [] temp = new String[8][8];
+            int cantidad=0;
+
+            for(int i=0;i<8;i++)
+            {
+                for(int j=0;j<8;j++)
+                {
+                    if(cantidad==tablero.length) break;
+                    temp[i][j]=tablero[cantidad];
+                    cantidad++;
+                }
+            }
+            return  temp;
         }
     }
 

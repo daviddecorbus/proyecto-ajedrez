@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Display;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -65,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
         tableroVisual = (TableLayout) findViewById(R.id.tablero); //Inicializa el tablero visual
         recuadro = (ImageView) findViewById(R.id.imagerojo); //Cargar el recuadro del tablero
         recuperarDatos(); //Recupera los datos
-        crearEjercicio(); //Recupera los datos del tablero
-        tableroPiezas.cargarTablero(ejercicio.getTablero(),nombreGuia); //Cargar el tablero
+        Ejercicio ejer = (Ejercicio) getIntent().getSerializableExtra("ejercicio");
+        ejercicio = ejer;
+       cargarEjercicio(ejercicio); //Recupera los datos del tablero
         tamañoTabla(); // Ajusta el tablero
         pintarTablero(); //Pinta las piezas
     }
@@ -154,60 +158,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Rellena el Array Multidimensional con las piezas
      */
-    public void crearEjercicio(){
-       /* tablero = new String[][]{{"v", "v", "v", "v", "v", "bk", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"bq", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "bn", "wq", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"wp", "wp", "v", "v", "v", "v", "v", "v"},
-                {"wk", "wn", "v", "v", "v", "v", "v", "v"}};
-        int cantidadMovimientos = 3;
-        String [] movimientos = new String[]{"3-0-6-0", "4-2-6-0","4-1-6-2"};
-        String colorInicio = "negro";
-        String textoEjercicio = "Negras ganan en dos movimientos";
-        ejercicio = new Ejercicio(tablero,cantidadMovimientos,colorInicio,movimientos,textoEjercicio);
-        turnoColor = colorInicio;
-        TextView texto = (TextView) findViewById(R.id.textoEjercicio);
-        texto.setText(ejercicio.getTextoEjercicio());*/
-        //////
-        tablero = new String[][]{{"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "wq", "v", "bp", "wn", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"bk", "v", "v", "wk", "v", "v", "v", "v"}};
-        int cantidadMovimientos = 3;
-        String [] movimientos = new String[]{"5-4-4-2", "5-3-6-3","5-1-6-1"};
-        String colorInicio = "blanco";
-        String textoEjercicio = "Blancas ganan en dos movimientos";
-        ejercicio = new Ejercicio(tablero,cantidadMovimientos,colorInicio,movimientos,textoEjercicio);
-        turnoColor = colorInicio;
+    public void cargarEjercicio(Ejercicio ejercicio){
+
+        turnoColor = ejercicio.getColorInicio();
         TextView texto = (TextView) findViewById(R.id.textoEjercicio);
         texto.setText(ejercicio.getTextoEjercicio());
+        tableroPiezas.cargarTablero(ejercicio.getTablero(),nombreGuia); //Cargar el tablero
     }
-    /*
-    public void recuperarTablero(){
-        tablero = new String[][]{{"br", "v", "v", "v", "bk", "v", "v", "br"},
-                {"v", "wp", "bp", "bp", "v", "bp", "v", "v"},
-                {"bp", "bb", "bn", "v", "v", "v", "v", "v"},
-                {"v", "bp", "v", "v", "v", "v", "wb", "v"},
-                {"v", "v", "v", "v", "wp", "v", "bp", "v"},
-                {"v", "v", "v", "wb", "v", "v", "wp", "bq"},
-                {"wp", "wp", "bp", "v", "wn", "v", "v", "wp"},
-                {"br", "wn", "v", "wq", "v", "wr", "v", "wk"}};
-        tablero = new String[][]{{"br", "bn", "bb", "bk", "bq", "bb", "bn", "br"},
-                {"bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"v", "v", "v", "v", "v", "v", "v", "v"},
-                {"wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp"},
-                {"wr", "wn", "wb", "wk", "wq", "wb", "wn", "wr"}};
-    }*/
 
     /**
      * Ajusta el tamaño de la tabla
@@ -351,9 +308,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     contadorMovimientos++;
                     if(contadorMovimientos==ejercicio.getCantidadMovimientos()){
-                        Toast.makeText(MainActivity.this, "Lo lograste", Toast.LENGTH_LONG).show();
+                        crearAlerta("Lo lograste",0);
                     }else {
-                        Toast.makeText(MainActivity.this, "Sigue así", Toast.LENGTH_LONG).show();
+                        crearAlerta("Sigue así",0);
 
                         movimientoRobot();
                     }
@@ -368,8 +325,7 @@ public class MainActivity extends AppCompatActivity {
                             pintarTablero(); //Pinta el tablero
                         }
                     }, 1000);
-
-                    Toast.makeText(MainActivity.this, "Puedes hacerlo mejor", Toast.LENGTH_SHORT).show();
+                    crearAlerta("Puedes hacerlo mejor",1);
                 }
             }
         }
@@ -410,6 +366,7 @@ public class MainActivity extends AppCompatActivity {
         }, 1000);
     }
     public void ayuda(View v){
+
         ayuda++;
 
         movimiento = ejercicio.getMovimientos()[contadorMovimientos];
@@ -441,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
                     //Devuelve valores de Preferencia
                    // boolean guia = data.getExtras().getBoolean("guiaActivada");
                     recuperarDatos();
-                    tableroPiezas.cargarTablero(tablero,nombreGuia); //Carga el tablero
+                    tableroPiezas.cargarTablero(ejercicio.getTablero(),nombreGuia); //Carga el tablero
                 }
                 break;
 
@@ -478,5 +435,35 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Crea una Alerta Personalizada
+     * @param texto Texto
+     * @param color Color
+     */
+    private void crearAlerta(String texto,int color)
+    {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = null;
+        if(color == 0)
+            layout = inflater.inflate(R.layout.toast,
+                    (ViewGroup) findViewById(R.id.toast_layout_root));
+
+        else
+            layout = inflater.inflate(R.layout.toast2, (ViewGroup) findViewById(R.id.toast_layout_root));
+
+
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText(texto);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM, 0,100);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+
+
     }
 }

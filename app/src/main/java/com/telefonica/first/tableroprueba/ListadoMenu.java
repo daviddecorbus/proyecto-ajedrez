@@ -46,7 +46,7 @@ public class ListadoMenu extends AppCompatActivity{
                 ChildInfo subCabecera =  cabecera.getSubmenus().get(childPosition);
                 Intent i = new Intent(getApplicationContext(),ListaEjercicios.class);
                 i.putExtra("tipo",cabecera.getNombre());
-                i.putExtra("nivel",cabecera.getSubmenus());
+                i.putExtra("nivel",subCabecera.getNombre());
                 startActivity(i);
                 return true;
             }
@@ -105,21 +105,21 @@ public class ListadoMenu extends AppCompatActivity{
      */
     private void cargarDatos(){
 
-        añadirSubmenu("Jaque Mate","Fácil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Jaque Mate","Facil",R.mipmap.ic_launcher_round);
         añadirSubmenu("Jaque Mate","Medio",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Jaque Mate","Difícil",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Ataque Doble","Fácil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Jaque Mate","Dificil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Ataque Doble","Facil",R.mipmap.ic_launcher_round);
         añadirSubmenu("Ataque Doble","Medio",R.mipmap.ic_launcher_round);
         añadirSubmenu("Ataque Doble","Difícil",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Clavada","Fácil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Clavada","Facil",R.mipmap.ic_launcher_round);
         añadirSubmenu("Clavada","Medio",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Clavada","Difícil",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Eliminación de la Defensa","Fácil",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Eliminación de la Defensa","Medio",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Eliminación de la Defensa","Difícil",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Rayos X","Fácil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Clavada","Dificil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Eliminacion de la Defensa","Facil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Eliminacion de la Defensa","Medio",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Eliminacion de la Defensa","Dificil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Rayos X","Facil",R.mipmap.ic_launcher_round);
         añadirSubmenu("Rayos X","Medio",R.mipmap.ic_launcher_round);
-        añadirSubmenu("Rayos X","Difícil",R.mipmap.ic_launcher_round);
+        añadirSubmenu("Rayos X","Dificil",R.mipmap.ic_launcher_round);
 
     }
 

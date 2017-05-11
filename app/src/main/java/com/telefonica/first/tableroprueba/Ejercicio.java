@@ -1,27 +1,45 @@
 package com.telefonica.first.tableroprueba;
 
-/**
- * Created by David Garrido on 10/05/2017.
- */
+import java.io.Serializable;
 
-public class Ejercicio {
+public class Ejercicio implements Serializable {
     private String [][] tablero = new String [8][8];
     private int cantidadMovimientos;
     private String colorInicio;
     private String [] movimientos;
     private String textoEjercicio;
     private String estado;
+    private int nivel;
+    private int id;
 
 
+    public int getNivel() {
+        return nivel;
+    }
 
-    public Ejercicio(String[][] tablero, int cantidadMovimientos, String colorInicio, String[] movimientos, String textoEjercicio) {
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Ejercicio(String[][] tablero, int cantidadMovimientos, String colorInicio, String[] movimientos, String textoEjercicio, int nivel, int id,String estado) {
 
         this.tablero = tablero;
         this.cantidadMovimientos = cantidadMovimientos;
         this.colorInicio = colorInicio;
         this.movimientos = movimientos;
         this.textoEjercicio = textoEjercicio;
-        this.estado = "sin empezar";
+        this.estado = estado;
+        this.nivel = nivel;
+        this.id = id;
+
     }
     public String getEstado() {
         return estado;
@@ -70,6 +88,10 @@ public class Ejercicio {
         this.textoEjercicio = textoEjercicio;
     }
 
+    @Override
+    public String toString(){
+        return "" + nivel;
+    }
 
 }
 
