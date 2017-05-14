@@ -3,19 +3,27 @@ package com.telefonica.first.tableroprueba;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import java.util.Locale;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class Configuracion extends PreferenceActivity  {
@@ -23,10 +31,16 @@ public class Configuracion extends PreferenceActivity  {
     private Context mContext;
     private PreferenceScreen ayuda;
     private CheckBoxPreference guia;
-   // private CheckBoxPreference sonido;
+   private ListPreference lenguaje;
    private CheckBoxPreference coordenadas;
+    private Locale lenguageActual;
    // private boolean guiaActivada;
 
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +50,7 @@ public class Configuracion extends PreferenceActivity  {
 
         PreferenceManager.setDefaultValues(Configuracion.this, R.xml.configuracion, false); //Pone los valores por defecto
         final PreferenceScreen preferencias = getPreferenceScreen(); // Obtiene las preferencias
+
 
        guia = (CheckBoxPreference) preferencias.findPreference("guia");
         guia.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -51,6 +66,24 @@ public class Configuracion extends PreferenceActivity  {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 preference.getEditor().putBoolean("coordenadas",(boolean) newValue);
+                return true;
+            }
+        });
+
+        lenguaje = (ListPreference) preferencias.findPreference("idioma");
+        lenguaje.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if(newValue.equals("Español") || newValue.equals("Spanish") ){
+                    preference.getEditor().putString("idioma","es");
+                    setLenguaje("es");
+            }
+                else {
+                    preference.getEditor().putString("idioma","en");
+                    Lenguaje.setLocale(mContext,"en");
+                    finish();
+                   setLenguaje("en");
+                }
                 return true;
             }
         });
@@ -93,5 +126,21 @@ public class Configuracion extends PreferenceActivity  {
             mandarResultado();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void setLenguaje(String lenguage) {
+
+        lenguageActual = new Locale(lenguage);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = lenguageActual;
+        res.updateConfiguration(conf, dm);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        Intent r = new Intent(this, ListadoMenu.class);
+        startActivity(r);
+        overridePendingTransition(0, 0);
     }
 }

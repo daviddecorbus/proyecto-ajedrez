@@ -31,9 +31,9 @@ public class AdaptadorEjercicios extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         v = inflater.inflate(R.layout.elementos_ejercicio, null);
         TextView textView = (TextView) v.findViewById(R.id.nivel);
-        textView.setText(ejercicios[position].getNivel() + " " +ejercicios[position].getEstado());
+        textView.setText(String.valueOf(ejercicios[position].getNivel()));
         switch (ejercicios[position].getEstado()){
-            case "sin empezar":
+            case "sin-empezar":
                 textView.setBackgroundColor(Color.RED);
                 break;
             case "empezada":

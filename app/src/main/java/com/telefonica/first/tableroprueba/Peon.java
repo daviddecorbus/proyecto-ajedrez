@@ -1,8 +1,8 @@
 package com.telefonica.first.tableroprueba;
 
-import static com.telefonica.first.tableroprueba.MainActivity.colorPiezaSeleccionada;
-import static com.telefonica.first.tableroprueba.MainActivity.tableroPiezas;
-import static com.telefonica.first.tableroprueba.MainActivity.resaltado;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.colorPiezaSeleccionada;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.tableroPiezas;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.resaltado;
 
 public class Peon extends Pieza {
     public Peon(String imagen, String imagenResaltada, String color, int x, int y) {

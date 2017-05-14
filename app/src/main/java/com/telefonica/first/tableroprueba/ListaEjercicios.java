@@ -1,16 +1,18 @@
 package com.telefonica.first.tableroprueba;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -21,23 +23,76 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class ListaEjercicios extends AppCompatActivity {
-    ListView listaEjercicios;
+    GridView listaEjercicios;
     ProgressDialog procesoEspera;
     AdaptadorEjercicios adaptadorEjercicios;
     Ejercicio [] ejercicios;
     Ejercicio [] ejercicios_usuario;
     String tipo;
     String nivel;
-    String usuario ="beatrix";
+
+
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+    /**
+     * Menu de Opciones
+     * @param menu Menu
+     * @return true o false
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_configuracion, menu);
+        return true;
+    }
+
+    /**
+     * Opciones del Menu
+     * @param item Opcion del menu
+     * @return true o false
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this,Configuracion.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(hayConexion()){
+            ComunicacionTask com = new ComunicacionTask();
+            String parametro = "tipo=" + tipo + "&nivel=" + nivel;
+            com.execute("http://caissamaister.esy.es/peticionEjercicios.php",parametro);
+        }
+        else {
+            Toast.makeText(this, getString(R.string.error_cargar), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(getString(R.string.tipoEjercicios));
         setContentView(R.layout.lista_ejercicios); //Carga el Layout
         Bundle bundle = getIntent().getExtras();
         //Recuperamos el tipo y el nivel
@@ -47,17 +102,17 @@ public class ListaEjercicios extends AppCompatActivity {
            tipo = tipo.replaceAll(" ","-");
 
         }
-        listaEjercicios =(ListView)this.findViewById(R.id.listaEjercicios);
+        listaEjercicios =(GridView) this.findViewById(R.id.listaEjercicios);
         procesoEspera =  new ProgressDialog(ListaEjercicios.this);
-        procesoEspera.setMessage("Cargando Ejercicios...");
-        procesoEspera.setTitle("Por favor, espera");
+        procesoEspera.setMessage(getString(R.string.cargando));
+        procesoEspera.setTitle(getString(R.string.titulo_cargando));
         if(hayConexion()){
             ComunicacionTask com = new ComunicacionTask();
             String parametro = "tipo=" + tipo + "&nivel=" + nivel;
             com.execute("http://caissamaister.esy.es/peticionEjercicios.php",parametro);
         }
         else {
-            Toast.makeText(this, "No se ha podido realizar la búsqueda, comprueba que tienes conectividad", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_cargar), Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -65,7 +120,7 @@ public class ListaEjercicios extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Ejercicio ejercicioActual = ejercicios[position];
-                Intent i = new Intent(ListaEjercicios.this,MainActivity.class);
+                Intent i = new Intent(ListaEjercicios.this,TableroEjercicio.class);
                 i.putExtra("ejercicio",ejercicioActual);
                  startActivity(i);
             }
@@ -123,7 +178,7 @@ public class ListaEjercicios extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            procesoEspera.dismiss();
+           // procesoEspera.dismiss();
             int contador = 1;
             try{
                 //creamos un array JSON a partir de la cadena recibida
@@ -141,11 +196,11 @@ public class ListaEjercicios extends AppCompatActivity {
 
                     String texto = job.getString("descripcion");
                     int id = job.getInt("id");
-                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,"sin empezar");
+                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,"sin-empezar");
                     contador++;
                 }
                 ComunicacionTask2 com = new ComunicacionTask2();
-                String parametro = "tipo=" + tipo + "&nivel=" + nivel + "&usuario=" + usuario;
+                String parametro = "tipo=" + tipo + "&nivel=" + nivel + "&correo=" + TableroEjercicio.correo;
                 com.execute("http://caissamaister.esy.es/peticionEjercicios2.php",parametro);
             }
             catch(JSONException ex){
@@ -197,11 +252,6 @@ public class ListaEjercicios extends AppCompatActivity {
             }
             return cadenaJson;
 
-        }
-
-        @Override
-        protected void onPreExecute() {
-            procesoEspera.show();
         }
 
         @Override

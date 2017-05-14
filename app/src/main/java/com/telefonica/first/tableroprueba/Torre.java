@@ -1,8 +1,8 @@
 package com.telefonica.first.tableroprueba;
 
-import static com.telefonica.first.tableroprueba.MainActivity.colorPiezaSeleccionada;
-import static com.telefonica.first.tableroprueba.MainActivity.resaltado;
-import static com.telefonica.first.tableroprueba.MainActivity.tableroPiezas;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.colorPiezaSeleccionada;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.resaltado;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.tableroPiezas;
 
 
 public class Torre extends Pieza {

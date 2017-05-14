@@ -34,12 +34,13 @@
         </PreferenceCategory>
 
         <PreferenceCategory android:title="@string/categoria2">
-            <CheckBoxPreference
+            <ListPreference
+                android:entries="@array/idioma"
+                android:entryValues="@array/idioma_valor"
                 android:defaultValue="true"
-                android:key="sonifo"
-                android:summary="@string/sonido_descripcion"
-                android:title="@string/sonido_titulo" />
-
+                android:key="idioma"
+                android:summary="@string/idioma_descripcion"
+                android:title="@string/idioma_titulo" />
         </PreferenceCategory>
 
     </PreferenceScreen>
@@ -48,4 +49,9 @@
         android:summary=""
         android:icon="@drawable/ic_settings_help"
         android:title="@string/ayuda" />
+    <PreferenceScreen
+        android:key="cerrar"
+        android:summary=""
+        android:icon="@android:drawable/ic_delete"
+        android:title="@string/cerrar" />
 </PreferenceScreen>

@@ -160,7 +160,7 @@ public class IconPickerPreference extends ListPreference  {
         updateIcon();
 
         summary = (TextView) view.findViewById(android.R.id.summary);
-        summary.setText(getEntry(selectedIconFile));
+      /*  summary.setText(getEntry(selectedIconFile));*/
 
     }
 
