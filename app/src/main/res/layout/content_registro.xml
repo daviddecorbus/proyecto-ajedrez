@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c9e8e6"
+    tools:context="com.telefonica.first.tableroprueba.Registro">
+
+
+    <LinearLayout
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="56dp"
+            android:layout_marginLeft="25dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvInicio"
+                android:layout_width="229dp"
+                android:layout_height="90dp"
+                android:textSize="40dp"
+                android:textColor="#1454a1"
+                android:text="Regístrate" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="88dp"
+            android:layout_marginLeft="25dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:textColor="#eb66a0"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:textSize="25dp"
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/Email"
+                android:background="#c9e8e6"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:textSize="16dp"
+                android:ems="9"
+                android:hint="tu email"
+                android:textColor="#1454a1"
+                android:textColorHint="#6dc9c7"
+
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTexto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="#eb66a0"
+                android:text="Password" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_weight="0.75"
+                android:background="#c9e8e6"
+                android:textSize="16dp"
+                android:hint="tu password"
+                android:textColor="#1454a1"
+                android:textColorHint="#6dc9c7"
+                android:ems="9"
+                android:inputType="textPassword" />
+
+
+            <EditText
+                android:id="@+id/password2"
+                android:layout_width="wrap_content"
+
+                android:layout_marginTop="15dp"
+
+                android:layout_height="23dp"
+                android:layout_weight="0.75"
+                android:background="#c9e8e6"
+                android:textSize="16dp"
+                android:hint="repite el password"
+                android:textColor="#1454a1"
+                android:textColorHint="#6dc9c7"
+                android:ems="9"
+                android:inputType="textPassword" />
+
+
+            <Button
+                android:id="@+id/registro"
+                android:layout_marginTop="41dp"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:background="#1454a1"
+                android:text="REGÍSTRATE" />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="192dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="71dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/caissa_logo"
+            android:layout_weight="1.34"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
