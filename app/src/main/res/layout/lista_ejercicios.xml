@@ -5,8 +5,8 @@
 
     <GridView
         android:id="@+id/listaEjercicios"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="0dp"
         android:padding="0dp"
         android:gravity="center"

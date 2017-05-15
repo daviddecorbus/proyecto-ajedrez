@@ -2,7 +2,6 @@ package com.telefonica.first.tableroprueba;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -11,6 +10,8 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +20,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -34,6 +34,8 @@ public class Configuracion extends PreferenceActivity  {
    private ListPreference lenguaje;
    private CheckBoxPreference coordenadas;
     private Locale lenguageActual;
+    private PreferenceScreen salir;
+    private PreferenceScreen admin;
    // private boolean guiaActivada;
 
 
@@ -48,11 +50,15 @@ public class Configuracion extends PreferenceActivity  {
         mContext = this.getApplicationContext(); //Contexto
         addPreferencesFromResource(R.xml.configuracion); //Carga el xml de configuracio
 
+        Bundle datos=getIntent().getExtras();
+
         PreferenceManager.setDefaultValues(Configuracion.this, R.xml.configuracion, false); //Pone los valores por defecto
         final PreferenceScreen preferencias = getPreferenceScreen(); // Obtiene las preferencias
 
+        PreferenceCategory notificationsCategory = (PreferenceCategory) preferencias.findPreference("categoria3");
 
-       guia = (CheckBoxPreference) preferencias.findPreference("guia");
+
+        guia = (CheckBoxPreference) preferencias.findPreference("guia");
         guia.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -87,6 +93,35 @@ public class Configuracion extends PreferenceActivity  {
                 return true;
             }
         });
+
+        salir = (PreferenceScreen) preferencias.findPreference("cerrar");
+        salir.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                preference.getEditor().putString("correo","").apply();
+                finish();
+                Intent i = new Intent(getApplicationContext(),SplashScreen.class);
+                startActivity(i);
+                return true;
+            }
+        });
+
+        admin = (PreferenceScreen) preferencias.findPreference("admin");
+        admin.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                finish();
+                Intent i = new Intent(getApplicationContext(),CrearJugadas.class);
+                startActivity(i);
+                return true;
+            }
+        });
+
+        if(datos.getString("admin").equalsIgnoreCase("no")){
+            notificationsCategory.setTitle("");
+            notificationsCategory.removePreference(admin);
+        }
+
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

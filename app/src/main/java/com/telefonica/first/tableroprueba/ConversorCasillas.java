@@ -8,7 +8,7 @@ public class ConversorCasillas {
 
     public static String conversor (String movimientos){
         String movimientosFinales="";
-        String [] cadenaMovimientos = movimientos.split("/");
+        String [] cadenaMovimientos = movimientos.split(",");
 
         for (int i = 0; i < cadenaMovimientos.length ; i++) {
             String [] cadena =cadenaMovimientos[i].split("-");
@@ -114,7 +114,7 @@ public class ConversorCasillas {
 
             }
             if ((i+1)!= cadenaMovimientos.length){
-                movimientosFinales = movimientosFinales + "/";
+                movimientosFinales = movimientosFinales + ",";
             }
         }
         System.out.println("movimientosFinales "+movimientosFinales);

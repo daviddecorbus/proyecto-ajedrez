@@ -2,10 +2,6 @@ package com.telefonica.first.tableroprueba;
 
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +26,7 @@ public class GrabarPartida extends AsyncTask<String, Void,String> {
                 //monta la url con la dirección y parámetro de envío
                 // URL url=new URL(params[0]+"?json="+params[1]);
                 URL url=new URL(params[0]+"?"+params[1]);
-                System.out.println("URL: " + url);
+                System.out.println("URL de grabarParida: " + url);
                 URLConnection con=url.openConnection();
                 String s;
                 InputStream is=con.getInputStream();

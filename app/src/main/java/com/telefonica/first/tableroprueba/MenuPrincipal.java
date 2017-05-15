@@ -1,16 +1,13 @@
 package com.telefonica.first.tableroprueba;
 
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
-import static com.telefonica.first.tableroprueba.TableroEjercicio.largo;
-import static com.telefonica.first.tableroprueba.TamañoLetra.tamañoLetra;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -58,4 +55,27 @@ public class MenuPrincipal extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("¿Quieres salir del juego?");
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            public void onClick(DialogInterface dialog, int which) {
+//if user pressed "yes", then he is allowed to exit from application
+                finishAffinity();
+            }
+        });
+        builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+//if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert=builder.create();
+        alert.show();
+    }
 }

@@ -3,10 +3,12 @@ package com.telefonica.first.tableroprueba;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,6 +73,9 @@ public class ListaEjercicios extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this,Configuracion.class);
+            SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
+            String admin = pre.getString("admin", "no");
+            intent.putExtra("admin",admin);
             startActivity(intent);
             return true;
         }
@@ -195,8 +200,9 @@ public class ListaEjercicios extends AppCompatActivity {
                     //String estado = job.getString("estado");
 
                     String texto = job.getString("descripcion");
+                    String textoIngles = job.getString("descripcionIngles");
                     int id = job.getInt("id");
-                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,"sin-empezar");
+                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,textoIngles,contador,id,"sin-empezar");
                     contador++;
                 }
                 ComunicacionTask2 com = new ComunicacionTask2();
@@ -234,7 +240,7 @@ public class ListaEjercicios extends AppCompatActivity {
                 //monta la url con la dirección y parámetro de envío
                 // URL url=new URL(params[0]+"?json="+params[1]);
                 URL url=new URL(params[0]+"?"+params[1]);
-                System.out.println("URL: " + url);
+                System.out.println("URL ejercicios usuario: " + url);
                 URLConnection con=url.openConnection();
                 //recuperacion de la respuesta JSON
                 String s;
@@ -272,8 +278,9 @@ public class ListaEjercicios extends AppCompatActivity {
                     String tablero = job.getString("tablero");
                     String estado = job.getString("estado");
                     String texto = job.getString("descripcion");
+                    String textoIngles = job.getString("descripcionIngles");
                     int id = job.getInt("id");
-                    ejercicios_usuario[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,estado);
+                    ejercicios_usuario[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,textoIngles,contador,id,estado);
                     contador++;
                 }
 

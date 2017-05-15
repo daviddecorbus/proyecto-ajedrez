@@ -2,19 +2,41 @@ package com.telefonica.first.tableroprueba;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.DragEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.Charset;
+import java.util.HashMap;
 
 import static com.telefonica.first.tableroprueba.ConversorCasillas.conversor;
 
@@ -23,7 +45,7 @@ public class CrearJugadas extends AppCompatActivity {
     private static final int CONFIGURACION = 1;
     private String[][] tablero; //Un Array Multidimensional con el nombre de las piezas
     private int ancho = 0; //Ancho de la Pantalla
-    private int largo = 0; //Largo de la Pantalla
+    private int largo = 0; //Largo de la Pantall
     protected static Tablero tableroPiezas = new Tablero(); //Tablero
     private TableLayout tableroVisual; //Tablero Visual
     private TableLayout tablerodePiezas;// Tablero con todas las Piezas
@@ -32,8 +54,8 @@ public class CrearJugadas extends AppCompatActivity {
             "bp","bp","bp","bp","bp","bp","bp","bp",
             "wr","wn","wb","wk","wq","wb","wn","wr",
             "wp","wp","wp","wp","wp","wp","wp","wp"};
-    ImageView imagenMovida;
-
+    private HashMap <String, Integer> tipoNivel = new HashMap<>();
+    private String tableroFinal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +68,137 @@ public class CrearJugadas extends AppCompatActivity {
         tamañoTabla(); // Ajusta el tablero
         pintarTablero(); //Pinta las piezas
         pintarTableroFichas(); // Pinta el tablero de fichas
-        conversor("a-1-b-2/c-3-d-4/e-5-f-6/g-7-h-8");
+        cargarMapa();
+
     }
 
+
+
+    private void cargarMapa(){
+        tipoNivel.put("jaque-facil", 1);
+        tipoNivel.put("jaque-medio", 2);
+        tipoNivel.put("jaque-dificil", 3);
+        tipoNivel.put("ataque-facil", 4);
+        tipoNivel.put("ataque-medio", 5);
+        tipoNivel.put("ataque-dificil", 6);
+        tipoNivel.put("clavada-facil", 7);
+        tipoNivel.put("clavada-medio", 8);
+        tipoNivel.put("clavada-dificil", 9);
+        tipoNivel.put("eliminacion-facil", 10);
+        tipoNivel.put("eliminacion-medio", 11);
+        tipoNivel.put("eliminacion-dificil", 12);
+        tipoNivel.put("rayos-facil", 13);
+        tipoNivel.put("rayos-medio", 14);
+        tipoNivel.put("rayos-dificil", 15);
+    }
+    private void cargarListas(Spinner color,Spinner nivel, Spinner tipo) {
+
+        //Adaptadores
+        ArrayAdapter<CharSequence> adaptadorColor = ArrayAdapter.createFromResource(this, R.array.colores, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adaptadorNivel = ArrayAdapter.createFromResource(this, R.array.niveles, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adaptadorTipo = ArrayAdapter.createFromResource(this, R.array.tipo, android.R.layout.simple_spinner_item);
+
+        adaptadorColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adaptadorNivel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adaptadorTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //Añade los Adaptadores
+        color.setAdapter(adaptadorColor);
+        nivel.setAdapter(adaptadorNivel);
+        tipo.setAdapter(adaptadorTipo);
+    }
+
+    private void crearAlerta(){
+
+
+        LayoutInflater li = LayoutInflater.from(this);
+        View vista = li.inflate(R.layout.alerta, null);
+
+        final AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
+        dialogo.setTitle("Introduzca los datos:");
+        dialogo.setView(vista);
+
+
+        final EditText cajaMovimientos = (EditText) vista.findViewById(R.id.edMovimientos);
+        final EditText cajaDescripcion = (EditText) vista.findViewById(R.id.edDescripcion);
+        final EditText cajaDescripcion2 = (EditText) vista.findViewById(R.id.edDescripcion2);
+        final Spinner color = (Spinner) vista.findViewById(R.id.sColor);
+        final Spinner nivel = (Spinner) vista.findViewById(R.id.sNivel);
+        final Spinner tipo = (Spinner) vista.findViewById(R.id.sTipo);
+        cargarListas(color,nivel,tipo);
+
+        dialogo
+                .setCancelable(false)
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                        if(cajaMovimientos.getText().toString().length() > 0 && !cajaMovimientos.getText().toString().equalsIgnoreCase("")){
+                            //nombreJugador = cajaNick.getText().toString();
+                            if(cajaDescripcion.getText().toString().length() > 0 && !cajaDescripcion.getText().toString().equalsIgnoreCase("")){
+                                //nombreJugador = cajaNick.getText().toString();
+                                if(cajaDescripcion2.getText().toString().length() > 0 && !cajaDescripcion2.getText().toString().equalsIgnoreCase("")){
+                                   //Posicion del Spinner color seleccionado
+
+                                 String resultadoColor = color.getSelectedItem().toString().toLowerCase(); //Color
+                                   String nivelTipo = tipo.getSelectedItem().toString().split(" ")[0].toLowerCase() + "-" +  nivel.getSelectedItem().toString().toLowerCase();
+                                 int  nivelEjercicio = tipoNivel.get(nivelTipo); //Obtiene el nivel
+                                  String movimientos = conversor(cajaMovimientos.getText().toString()); //Movimientos
+
+
+
+                                  String [] descripcion = cajaDescripcion.getText().toString().split(" ");
+                                  String descripcionFinal = "";
+                                    for (int i = 0; i < descripcion.length ; i++) {
+                                        if (i==descripcion.length-1){
+                                            descripcionFinal = descripcionFinal + descripcion[i];
+                                        }else {
+                                            descripcionFinal = descripcionFinal + descripcion[i] + "%20";
+                                        }
+                                    }
+
+                                  String [] descripcion2 = cajaDescripcion2.getText().toString().split(" ");
+                                    String descripcionFinal2 = "";
+                                    for (int i = 0; i < descripcion.length ; i++) {
+                                        if (i==descripcion.length-1){
+                                            descripcionFinal2 = descripcionFinal2 + descripcion[i];
+                                        }else {
+                                            descripcionFinal2 = descripcionFinal2 + descripcion[i] + "%20";
+                                        }
+                                    }
+
+
+                                    int cantidadMovimientos = movimientos.split(",").length;
+                                    Toast.makeText(CrearJugadas.this, nivelEjercicio + "", Toast.LENGTH_SHORT).show();
+                                    CrearEjercicio com = new CrearEjercicio();
+                                    String parametro = "id_nivel=" + nivelEjercicio + "&descripcion=" + descripcionFinal+ "&descripcionIngles=" + descripcionFinal2 + "&movimientos=" + movimientos+ "&color_inicial=" + resultadoColor+"&tablero=" + tableroFinal+"&cantidad_movimientos="+cantidadMovimientos;
+                                    com.execute("http://caissamaister.esy.es/crearEjercicio.php",parametro);
+                                }
+                                else {
+                                    Toast.makeText(CrearJugadas.this, "Debes rellenar la descripción del ejercicio", Toast.LENGTH_SHORT).show();
+                                    crearAlerta();
+                                }
+                            }
+                            else {
+                                Toast.makeText(CrearJugadas.this, "Debes rellenar la descripción del ejercicio", Toast.LENGTH_SHORT).show();
+                                crearAlerta();
+                            }
+                        }
+                        else {
+                            Toast.makeText(CrearJugadas.this, "Debes rellenar los movimientos", Toast.LENGTH_SHORT).show();
+                            crearAlerta();
+                        }
+                    }
+
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                            dialogBox.dismiss();
+                    }
+
+                });
+
+        AlertDialog alertDialogAndroid = dialogo.create();
+        alertDialogAndroid.show();
+    }
 
     /**
      * Menu de Opciones
@@ -82,7 +232,14 @@ public class CrearJugadas extends AppCompatActivity {
             return true;
         }
         else if (id == R.id.guardar) {
-
+            tableroFinal = "";
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    tableroFinal += tablero[i][j]+"-";
+                }
+            }
+            tableroFinal = tableroFinal.substring(0, tableroFinal.length()-1); //String final
+            crearAlerta();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -219,10 +376,12 @@ public class CrearJugadas extends AppCompatActivity {
     }
 
 
+
+
     private final class MyTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                imagenMovida = (ImageView) view; //Imagen movida
+                ImageView imagenMovida = (ImageView) view; //Imagen movida
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(
                         view);
@@ -234,6 +393,7 @@ public class CrearJugadas extends AppCompatActivity {
             }
         }
     }
+
 
     class MyDragListener implements View.OnDragListener {
         View draggedView;
@@ -285,6 +445,73 @@ public class CrearJugadas extends AppCompatActivity {
                     break;
             }
             return true;
+        }
+    }
+
+    /**
+     * Llama a login2.php para revisar estado del email y la contraseña. Nos devuelve un código y depende del código
+     * mostramos mensaje al usuario
+     */
+    private class CrearEjercicio extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String cadenaJson="";
+            try{
+                //monta la url con la dirección y parámetro de envío
+                // URL url=new URL(params[0]+"?json="+params[1]);
+                URL url=new URL(params[0]+"?"+params[1]);
+                System.out.println("URL crearEjercicio: " + url);
+                URLConnection con=url.openConnection();
+                //recuperacion de la respuesta JSON
+                String s;
+                InputStream is=con.getInputStream();
+                //utilizamos UTF-8 para que interprete correctamente las ñ y acentos
+                BufferedReader bf=new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8")));
+                while((s=bf.readLine())!=null){
+                    cadenaJson+=s;
+                    System.out.println("el codigo cadenajson "+cadenaJson);
+                }
+
+            }
+            catch(IOException ex){
+                ex.printStackTrace();
+            }
+            return cadenaJson;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            //procesoEspera.show();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // procesoEspera.dismiss();4
+
+            try {
+                JSONArray jarray=new JSONArray(result);
+                String codigo="";
+                for(int i=0;i<jarray.length();i++) {
+                    JSONObject job = jarray.getJSONObject(i);
+                    codigo = job.getString("codigo");
+                    System.out.println("el codigo es "+codigo);
+
+                }
+
+                if(codigo.equalsIgnoreCase("-1")){
+                    Toast.makeText(CrearJugadas.this,"Error al guardar ejercicio",Toast.LENGTH_SHORT).show();
+                }else if(codigo.equalsIgnoreCase("1")){
+                    Toast.makeText(CrearJugadas.this,"Ejercicio creado correctamente",Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+            catch(JSONException ex){
+                ex.printStackTrace();
+            }
         }
     }
 }

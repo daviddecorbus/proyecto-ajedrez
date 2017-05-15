@@ -3,28 +3,20 @@ package com.telefonica.first.tableroprueba;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.Locale;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-
 import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
 import static com.telefonica.first.tableroprueba.TableroEjercicio.largo;
-import static com.telefonica.first.tableroprueba.TamañoLetra.tamañoLetra;
 
 public class SplashScreen extends AppCompatActivity {
      Handler handler;
+    String correo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +27,11 @@ public class SplashScreen extends AppCompatActivity {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+        SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
+        correo = pre.getString("correo", "");
+        String idioma = pre.getString("idioma", "es");
+        Lenguaje.setLocale(this, idioma); // Inicializa el idioma
+
         setContentView(R.layout.activity_splash_screen);
 
 
@@ -43,7 +40,14 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, MenuPrincipal.class);
+                Intent intent;
+                if(correo.equals("")){
+                    intent = new Intent(SplashScreen.this, MenuPrincipal.class);
+                }
+                else {
+                    TableroEjercicio.correo=correo;
+                    intent = new Intent(SplashScreen.this, ListadoMenu.class);
+                }
                 startActivity(intent);
                 finish();
 

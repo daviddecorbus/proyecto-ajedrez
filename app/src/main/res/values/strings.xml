@@ -5,12 +5,16 @@
     <string name="app_name">Board</string>
     <string name="tipoEjercicios">List of Exercise</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="crearTablero">Create Board</string>
     <string name="action_settings">Menu</string>
     <string name="menu_configuracion">Configuration</string>
     <string name="ejercicio">Exercise</string>
     <string name="ayuda">Help</string>
     <string name="categoria1">BOARD</string>
     <string name="categoria2">LANGUAGE</string>
+    <string name="categoria3">Admin</string>
+    <string name="tablero_titulo">Create Board</string>
+    <string name="tablero_descripcion"></string>
     <string name="coordenadas_titulo">Show coordinates</string>
     <string name="coordenadas_descripcion">Show coordinates of board [a,h] [1-8]</string>
     <string name="guia_titulo">Show Guide</string>
@@ -21,18 +25,31 @@
     <string name="finalizado">You did</string>
     <string name="continua">Keep it up</string>
     <string name="error">Could you do it better</string>
-    <string name="cargando">"Loading Exercises..."</string>
+    <string name="cargando">Loading Exercises...</string>
     <string name="titulo_cargando">"Please, wait"</string>
     <string name="jaque">Checkmate</string>
     <string name="ataque">Double attack</string>
     <string name="clavada">Nailed</string>
     <string name="defensa">Elimination of Defense</string>
     <string name="rayos">X-rays</string>
-    <string name="nivel_facil">"Easy"</string>
-    <string name="nivel_medio">"Medium"</string>
-    <string name="nivel_dificil">"Difficult"</string>
+    <string name="nivel_facil">Easy</string>
+    <string name="nivel_medio">Medium</string>
+    <string name="nivel_dificil">Difficult</string>
     <string name="error_cargar">Unable to search, make sure you have connectivity</string>
     <string name="cerrar">Logout</string>
+    <string name="salirJuego">Do you want to get out of the game?"</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+
+    <string name="identificate">Sign in</string>
+    <string name="registrate">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="btidentificate">SIGN IN</string>
+    <string name="btregistrate">SIGNG UP</string>
+    <string name="hinttupassword">your password</string>
+    <string name="hintrepitepassword">repeat your password</string>
+    <string name="hinttuemail">your email</string>
 
     <string-array name="idioma">
         <item>Spanish</item>
@@ -60,13 +77,40 @@
         <item>ic_azul_claro</item>
         <item>ic_amarillo</item>
         <item>ic_azul_oscuro</item>
-        <item>ic_rosa_oscuro</item>
         <item>ic_azul_turquesa</item>
         <item>ic_morado</item>
         <item>ic_naranja</item>
         <item>ic_rosa</item>
+        <item>ic_rosa_oscuro</item>
 
     </string-array>
+
+
+    <string-array name="colores">
+        <item>White</item>
+        <item>Black</item>
+    </string-array>
+
+    <string-array name="niveles">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Difficult</item>
+    </string-array>
+
+
+    <string-array name="tipo">
+        <item>Checkemate</item>
+        <item>Double attack</item>
+        <item>Nailed</item>
+        <item>Elimination of Defense</item>
+        <item>X-rays</item>
+    </string-array>
+
+
+
+
+
+
 
 
     <string name="icon_default">ic_azul_claro</string>

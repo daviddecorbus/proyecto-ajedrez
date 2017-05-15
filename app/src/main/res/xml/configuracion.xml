@@ -29,7 +29,7 @@
                 android:layout="@layout/icon_item_preference"
                 android:title="@string/icon_label"
                 android:summary="Selecciona un Color"
-                custom:iconFile="@string/icon_default" />
+            custom:iconFile="@string/icon_default" />
 
         </PreferenceCategory>
 
@@ -41,6 +41,15 @@
                 android:key="idioma"
                 android:summary="@string/idioma_descripcion"
                 android:title="@string/idioma_titulo" />
+        </PreferenceCategory>
+
+        <PreferenceCategory android:title="@string/categoria3"
+            android:key="categoria3">
+
+            <PreferenceScreen
+                android:key="admin"
+                android:summary="@string/tablero_descripcion"
+                android:title="@string/tablero_titulo" />
         </PreferenceCategory>
 
     </PreferenceScreen>

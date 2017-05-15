@@ -1,28 +1,22 @@
 package com.telefonica.first.tableroprueba;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,9 +25,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
-import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
-import static com.telefonica.first.tableroprueba.TableroEjercicio.largo;
-import static com.telefonica.first.tableroprueba.TamañoLetra.tamañoLetra;
+import static android.content.Context.CONNECTIVITY_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class Login extends  Fragment {
@@ -62,7 +55,7 @@ private String password;
        /* LinearLayout linear = (LinearLayout) getView().findViewById(R.id.linear);
        linear.getLayoutParams().width = ancho-(ancho/3);*/
         // Asigna el método login() al botón del activity_login
-        Button boton = (Button) getView().findViewById(R.id. btEnviar);
+        Button boton = (Button) view.findViewById(R.id. btEnviar);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,21 +64,45 @@ private String password;
     }
 
     /**
+     * Comrpueba si hay conexion
+     * @return si hay conexion
+     */
+    public boolean hayConexion() {
+
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
+            else return false;
+        } else
+            return false;
+    }
+
+    /**
      * Recupera los datos de los EditText y revisa que sean datos válidos (si son válidos llama al AsyncTask crearLogin si no muestra
       muestra un alert con mensaje al usuario
      */
     public void login(){
         EditText mail = (EditText) getView().findViewById(R.id.etEmail);
-        email= String.valueOf(mail.getText());
+        email= String.valueOf(mail.getText()).trim();
         System.out.println("el mail es "+email);
         EditText pass = (EditText) getView().findViewById(R.id.etTexto);
-        password= String.valueOf(pass.getText());
+        password= String.valueOf(pass.getText()).trim();
         System.out.println("el password es "+password);
         if (!email.trim().equalsIgnoreCase("") && email.contains("@") && email.contains(".")){
             if (!password.trim().equalsIgnoreCase("")){
-                CrearLogin com = new CrearLogin();
-                String parametro = "password=" + password.trim() + "&correo=" + email.trim();
-                com.execute("http://caissamaister.esy.es/login2.php",parametro);
+                if(hayConexion()){
+                    CrearLogin com = new CrearLogin();
+                    String parametro = "password=" + password.trim() + "&correo=" + email.trim();
+                    com.execute("http://caissamaister.esy.es/login2.php",parametro);
+                }
+                else {
+                    Toast.makeText(getActivity(), "No tienes conectividad", Toast.LENGTH_SHORT).show();
+                }
 
             }else{
                 System.out.println("introduce un password");
@@ -158,7 +175,21 @@ private String password;
                 }
                 else if (codigo.equalsIgnoreCase("2")) {
                     Toast.makeText(getActivity(), "Usuario logueado", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = getContext().getSharedPreferences("com.telefonica.first.tableroprueba_preferences", MODE_PRIVATE).edit();
+                    editor.putString("correo", email);
+                    editor.putString("admin","no");
+                    editor.apply();
                    TableroEjercicio.correo = email;
+                    Intent intent = new Intent(getActivity(),ListadoMenu.class);
+                    startActivity(intent);
+                }
+                else if (codigo.equalsIgnoreCase("3")) {
+                    Toast.makeText(getActivity(), "Usuario logueado", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = getContext().getSharedPreferences("com.telefonica.first.tableroprueba_preferences", MODE_PRIVATE).edit();
+                    editor.putString("correo", email);
+                    editor.putString("admin","si");
+                    editor.apply();
+                    TableroEjercicio.correo = email;
                     Intent intent = new Intent(getActivity(),ListadoMenu.class);
                     startActivity(intent);
                 }

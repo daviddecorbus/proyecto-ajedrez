@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-
 public class AdaptadorViewPager extends FragmentPagerAdapter {
 
     // en esta variable almacenaremos el nº de secciones

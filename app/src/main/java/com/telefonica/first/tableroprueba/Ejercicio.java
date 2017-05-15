@@ -8,6 +8,7 @@ public class Ejercicio implements Serializable {
     private String colorInicio;
     private String [] movimientos;
     private String textoEjercicio;
+    private String textoEjercicioIngles;
     private String estado;
     private int nivel;
     private int id;
@@ -29,13 +30,14 @@ public class Ejercicio implements Serializable {
         this.id = id;
     }
 
-    public Ejercicio(String[][] tablero, int cantidadMovimientos, String colorInicio, String[] movimientos, String textoEjercicio, int nivel, int id,String estado) {
+    public Ejercicio(String[][] tablero, int cantidadMovimientos, String colorInicio, String[] movimientos, String textoEjercicio,String textoEjercicioIngles, int nivel, int id,String estado) {
 
         this.tablero = tablero;
         this.cantidadMovimientos = cantidadMovimientos;
         this.colorInicio = colorInicio;
         this.movimientos = movimientos;
         this.textoEjercicio = textoEjercicio;
+        this.textoEjercicioIngles = textoEjercicioIngles;
         this.estado = estado;
         this.nivel = nivel;
         this.id = id;
@@ -86,6 +88,14 @@ public class Ejercicio implements Serializable {
 
     public void setTextoEjercicio(String textoEjercicio) {
         this.textoEjercicio = textoEjercicio;
+    }
+
+    public String getTextoEjercicioIngles() {
+        return textoEjercicioIngles;
+    }
+
+    public void setTextoEjercicioIngles(String textoEjercicioIngles) {
+        this.textoEjercicioIngles = textoEjercicioIngles;
     }
 
     @Override

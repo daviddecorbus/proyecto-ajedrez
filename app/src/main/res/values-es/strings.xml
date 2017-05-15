@@ -5,12 +5,16 @@
     <string name="app_name">Tablero</string>
     <string name="tipoEjercicios">Menu de Ejercicios</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="crearTablero">Crear Tablero</string>
     <string name="action_settings">Menu</string>
     <string name="menu_configuracion">Configuracion</string>
     <string name="ejercicio">Ejercicio</string>
     <string name="ayuda">Ayuda</string>
     <string name="categoria1">TABLERO</string>
     <string name="categoria2">IDIOMA</string>
+    <string name="categoria3">Admin</string>
+    <string name="tablero_titulo">Crear Tablero</string>
+    <string name="tablero_descripcion"></string>
     <string name="coordenadas_titulo">Mostrar Coordenadas</string>
     <string name="coordenadas_descripcion">Mostrar coordenadas del tablero [a,h] [1-8]</string>
     <string name="guia_titulo">Mostrar Guia</string>
@@ -21,20 +25,32 @@
     <string name="finalizado">Lo Lograste</string>
     <string name="continua">Sigue así</string>
     <string name="error">Puedes hacerlo mejor</string>
-    <string name="cargando">"Cargando Ejercicios..."</string>
+    <string name="cargando">Cargando Ejercicios...</string>
     <string name="titulo_cargando">"Por favor, espera"</string>
-    <string name="nivel_facil">"Facil"</string>
-    <string name="nivel_medio">"Medio"</string>
-    <string name="nivel_dificil">"Dificil"</string>
+    <string name="nivel_facil">Facil</string>
+    <string name="nivel_medio">Medio</string>
+    <string name="nivel_dificil">Dificil</string>
     <string name="error_cargar">No se ha podido realizar la búsqueda, comprueba que tienes conectividad</string>
     <string name="jaque">Jaque Mate</string>
     <string name="ataque">Ataque Doble</string>
     <string name="clavada">Clavada</string>
-    <string name="defensa">Eliminación de la Defensa</string>
+    <string name="defensa">Eliminacion de la Defensa</string>
     <string name="rayos">Rayos X</string>
     <string name="cerrar">Cerrar Sesión</string>
+    <string name="salirJuego">¿Quieres salir del juego?</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
 
 
+    <string name="identificate">Identifícate</string>
+    <string name="registrate">Regístrate</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="btidentificate">IDENTIFÍCATE</string>
+    <string name="btregistrate">REGÍSTRATE</string>
+    <string name="hinttuemail">tu email</string>
+    <string name="hinttupassword">tu password</string>
+    <string name="hintrepitepassword">repite el password</string>
 
     <string-array name="idioma">
         <item>Español</item>
@@ -61,13 +77,36 @@
         <item>ic_azul_claro</item>
         <item>ic_amarillo</item>
         <item>ic_azul_oscuro</item>
-        <item>ic_rosa_oscuro</item>
         <item>ic_azul_turquesa</item>
         <item>ic_morado</item>
         <item>ic_naranja</item>
         <item>ic_rosa</item>
+        <item>ic_rosa_oscuro</item>
 
     </string-array>
+
+
+    <string-array name="colores">
+        <item>Blanco</item>
+        <item>Negro</item>
+    </string-array>
+
+
+    <string-array name="niveles">
+        <item>Facil</item>
+        <item>Medio</item>
+        <item>Dificil</item>
+    </string-array>
+
+    <string-array name="tipo">
+        <item>Jaque Mate</item>
+        <item>Ataque Doble</item>
+        <item>Clavada</item>
+        <item>Eliminacion de la Defensa</item>
+        <item>Rayos X</item>
+    </string-array>
+
+
 
 
     <string name="icon_default">ic_azul_claro</string>

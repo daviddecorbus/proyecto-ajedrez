@@ -28,7 +28,7 @@
                 android:layout_height="90dp"
                 android:textSize="40dp"
                 android:textColor="#1454a1"
-                android:text="Identifícate" />
+                android:text="@string/identificate" />
 
 
         </LinearLayout>
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:textSize="25dp"
-                android:text="Email" />
+                android:text="@string/email" />
 
             <EditText
                 android:id="@+id/etEmail"
@@ -58,7 +58,7 @@
                 android:layout_height="23dp"
                 android:textSize="16dp"
                 android:ems="9"
-                android:hint="tu email"
+                android:hint="@string/hinttuemail"
                 android:textColor="#1454a1"
                 android:textColorHint="#6dc9c7"
 
@@ -83,7 +83,7 @@
                 android:layout_weight="1"
                 android:textSize="25dp"
                 android:textColor="#eb66a0"
-                android:text="Password" />
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/etTexto"
@@ -92,7 +92,7 @@
                 android:layout_weight="0.75"
                 android:background="#c9e8e6"
                 android:textSize="16dp"
-                android:hint="tu password"
+                android:hint="@string/hintrepitepassword"
                 android:textColor="#1454a1"
                 android:textColorHint="#6dc9c7"
                 android:ems="9"
@@ -106,7 +106,7 @@
                 android:layout_weight="1"
                 android:textColor="#fff"
                 android:background="#1454a1"
-                android:text="Identifícate"
+                android:text="@string/btidentificate"
                 android:onClick="login"
                 />
 

@@ -12,7 +12,7 @@
         android:id="@+id/imagerojo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/rojo"
+        app:srcCompat="@drawable/borde_azul_oscuro"
         app:layout_constraintBottom_toTopOf="@+id/tablero"
         app:layout_constraintTop_toBottomOf="@+id/tablero"
         app:layout_constraintRight_toLeftOf="@+id/tablero"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
 
         android:layout_height="381dp"
-        android:background="@drawable/tablero_marron"
+        android:background="@drawable/tableroazuloscuro2"
         android:baselineAligned="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

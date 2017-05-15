@@ -1,30 +1,24 @@
 package com.telefonica.first.tableroprueba;
 
-        import android.app.Activity;
-        import android.content.Context;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.content.res.Configuration;
-        import android.content.res.Resources;
-        import android.os.Build;
-        import android.os.Bundle;
-        import android.preference.PreferenceManager;
-        import android.support.annotation.RequiresApi;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.DisplayMetrics;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.ExpandableListView;
-        import android.widget.Toast;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ExpandableListView;
 
-        import java.util.ArrayList;
-        import java.util.LinkedHashMap;
-        import java.util.Locale;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
-        import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ListadoMenu extends AppCompatActivity{
     private String idioma;
@@ -71,6 +65,9 @@ public class ListadoMenu extends AppCompatActivity{
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this,Configuracion.class);
+            SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
+            String admin = pre.getString("admin", "no");
+            intent.putExtra("admin",admin);
             startActivity(intent);
             return true;
         }
@@ -123,7 +120,7 @@ public class ListadoMenu extends AppCompatActivity{
                             tipo = "Clavada";
                             break;
                         case "Elimination of Defense":
-                            tipo = "Eliminación de la Defensa";
+                            tipo = "Eliminacion de la Defensa";
                             break;
                         case "X-rays":
                             tipo = "Rayos X";
@@ -133,13 +130,13 @@ public class ListadoMenu extends AppCompatActivity{
 
                     switch (subCabecera.getNombre()){
                         case "Easy":
-                            nivel = "Fácil";
+                            nivel = "Facil";
                             break;
                         case "Medium":
                             nivel = "Medio";
                             break;
                         case "Difficult":
-                            nivel = "Difícil";
+                            nivel = "Dificil";
                             break;
                     }
                 }
@@ -204,21 +201,21 @@ public class ListadoMenu extends AppCompatActivity{
      * Inicializa los datos
      */
     private void cargarDatos(){
-        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_facil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_medio),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_dificil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_facil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_medio),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_dificil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_facil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_medio),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_dificil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_facil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_medio),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_dificil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_facil),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_medio),R.mipmap.ic_launcher_round);
-        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_dificil),R.mipmap.ic_launcher_round);
+        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_facil),R.drawable.ic_facil);
+        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_medio),R.drawable.ic_medio);
+        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_facil),R.drawable.ic_facil);
+        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_medio),R.drawable.ic_medio);
+        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_facil),R.drawable.ic_facil);
+        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_medio),R.drawable.ic_medio);
+        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_facil),R.drawable.ic_facil);
+        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_medio),R.drawable.ic_medio);
+        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_facil),R.drawable.ic_facil);
+        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_medio),R.drawable.ic_medio);
+        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
 
     }
 
@@ -266,19 +263,17 @@ public class ListadoMenu extends AppCompatActivity{
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setMessage("¿Quieres salir del juego?");
-        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.salirJuego);
+        builder.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             public void onClick(DialogInterface dialog, int which) {
-//if user pressed "yes", then he is allowed to exit from application
                 finishAffinity();
             }
         });
-        builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no,new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
-//if user select "No", just cancel this dialog and continue with app
                 dialog.cancel();
             }
         });
