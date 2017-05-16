@@ -98,16 +98,16 @@ public class Registro extends Fragment{
                     com.execute("http://caissamaister.esy.es/login.php",parametro);
                 }
                 else {
-                    Toast.makeText(getActivity(), "No tienes conectividad", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.conectividad, Toast.LENGTH_SHORT).show();
                 }
 
 
             }else{
-                Toast.makeText(getActivity(), "Introduce la misma contraseña", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.repite_contraseña, Toast.LENGTH_SHORT).show();
                 System.out.println("introduce la misma contraseña");
             }
         }else{
-            Toast.makeText(getActivity(), "Introduce un email válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.email_valido, Toast.LENGTH_SHORT).show();
             System.out.println("introduce un email válido");
         }
 
@@ -169,10 +169,10 @@ public class Registro extends Fragment{
                 }
 
                 if(codigo.equalsIgnoreCase("-1")){
-                    Toast.makeText(getActivity(), "El email ya está registrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.email_registrado, Toast.LENGTH_SHORT).show();
                 }
                 else if(codigo.equalsIgnoreCase("1")){
-                    Toast.makeText(getActivity(), "Registro realizado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.registro_realizado, Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = getContext().getSharedPreferences("com.telefonica.first.tableroprueba_preferences", MODE_PRIVATE).edit();
                     editor.putString("correo", email);
                     editor.apply();
@@ -181,10 +181,10 @@ public class Registro extends Fragment{
                     startActivity(intent);
                 }
                 else if (codigo.equalsIgnoreCase("2")) {
-                    Toast.makeText(getActivity(), "El email y la contraseña ya están registrados", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.email2, Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(getActivity(), "Se ha producido un error desconocido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.error2, Toast.LENGTH_SHORT).show();
                 }
             }
             catch(JSONException ex){

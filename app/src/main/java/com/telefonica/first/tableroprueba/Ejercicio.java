@@ -8,11 +8,10 @@ public class Ejercicio implements Serializable {
     private String colorInicio;
     private String [] movimientos;
     private String textoEjercicio;
-    private String textoEjercicioIngles;
     private String estado;
     private int nivel;
     private int id;
-
+    private int id_nivel;
 
     public int getNivel() {
         return nivel;
@@ -30,18 +29,17 @@ public class Ejercicio implements Serializable {
         this.id = id;
     }
 
-    public Ejercicio(String[][] tablero, int cantidadMovimientos, String colorInicio, String[] movimientos, String textoEjercicio,String textoEjercicioIngles, int nivel, int id,String estado) {
+    public Ejercicio(String[][] tablero, int cantidadMovimientos, String colorInicio, String[] movimientos, String textoEjercicio, int nivel, int id,String estado,int id_nivel) {
 
         this.tablero = tablero;
         this.cantidadMovimientos = cantidadMovimientos;
         this.colorInicio = colorInicio;
         this.movimientos = movimientos;
         this.textoEjercicio = textoEjercicio;
-        this.textoEjercicioIngles = textoEjercicioIngles;
         this.estado = estado;
         this.nivel = nivel;
         this.id = id;
-
+        this.id_nivel = id_nivel;
     }
     public String getEstado() {
         return estado;
@@ -56,6 +54,14 @@ public class Ejercicio implements Serializable {
 
     public void setCantidadMovimientos(int cantidadMovimientos) {
         this.cantidadMovimientos = cantidadMovimientos;
+    }
+
+    public int getId_nivel() {
+        return id_nivel;
+    }
+
+    public void setId_nivel(int id_nivel) {
+        this.id_nivel = id_nivel;
     }
 
     public String[] getMovimientos() {
@@ -90,13 +96,6 @@ public class Ejercicio implements Serializable {
         this.textoEjercicio = textoEjercicio;
     }
 
-    public String getTextoEjercicioIngles() {
-        return textoEjercicioIngles;
-    }
-
-    public void setTextoEjercicioIngles(String textoEjercicioIngles) {
-        this.textoEjercicioIngles = textoEjercicioIngles;
-    }
 
     @Override
     public String toString(){

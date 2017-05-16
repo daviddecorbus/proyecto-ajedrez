@@ -110,7 +110,7 @@ public class ListadoMenu extends AppCompatActivity{
                 String nivel = subCabecera.getNombre();
                 if(idioma.equals("en") || idioma.equals("es")){
                     switch (cabecera.getNombre()){
-                        case "Checkmate":
+                        case "Mate":
                             tipo = "Jaque Mate";
                             break;
                         case "Double attack":
@@ -125,17 +125,27 @@ public class ListadoMenu extends AppCompatActivity{
                         case "X-rays":
                             tipo = "Rayos X";
                             break;
+                        case "Eliminación de la Defensa":
+                            tipo = "Eliminacion de la Defensa";
+                            break;
 
                     }
 
                     switch (subCabecera.getNombre()){
-                        case "Easy":
+                        case "Begginer":
                             nivel = "Facil";
                             break;
-                        case "Medium":
+                        case "Intermediate":
                             nivel = "Medio";
                             break;
-                        case "Difficult":
+                        case "Advanced":
+                            nivel = "Dificil";
+                            break;
+
+                        case "Fácil":
+                            nivel = "Facil";
+                            break;
+                        case "Difícil":
                             nivel = "Dificil";
                             break;
                     }

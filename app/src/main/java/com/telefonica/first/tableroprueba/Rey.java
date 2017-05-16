@@ -4,9 +4,7 @@ import static com.telefonica.first.tableroprueba.TableroEjercicio.colorPiezaSele
 import static com.telefonica.first.tableroprueba.TableroEjercicio.resaltado;
 import static com.telefonica.first.tableroprueba.TableroEjercicio.tableroPiezas;
 
-/**
- * Created by David Garrido on 06/05/2017.
- */
+
 
 public class Rey extends Pieza {
 public boolean jaque;

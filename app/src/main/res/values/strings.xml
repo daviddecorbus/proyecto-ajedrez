@@ -1,15 +1,16 @@
 <resources>
     <string name="splash">Caissa</string>
-    <string name="logearse">Sign in</string>
+    <string name="logearse">Log in</string>
     <string name="registrarse">Sign up</string>
     <string name="app_name">Board</string>
-    <string name="tipoEjercicios">List of Exercise</string>
+    <string name="tipoEjercicios">Solve puzzles</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="titulo_sugerencia">"Introduce tu sugerencia:"</string>
     <string name="crearTablero">Create Board</string>
     <string name="action_settings">Menu</string>
-    <string name="menu_configuracion">Configuration</string>
-    <string name="ejercicio">Exercise</string>
-    <string name="ayuda">Help</string>
+    <string name="menu_configuracion">Settings</string>
+    <string name="ejercicio">Puzzle</string>
+    <string name="sugerencia">Suggestion</string>
     <string name="categoria1">BOARD</string>
     <string name="categoria2">LANGUAGE</string>
     <string name="categoria3">Admin</string>
@@ -22,22 +23,22 @@
     <string name="idioma_titulo">Language</string>
     <string name="idioma_descripcion">Allows you to choose the language of the application</string>
     <string name="default_summary">Choose the color of the board</string>
-    <string name="finalizado">You did</string>
-    <string name="continua">Keep it up</string>
-    <string name="error">Could you do it better</string>
-    <string name="cargando">Loading Exercises...</string>
+    <string name="finalizado">Endgame</string>
+    <string name="continua">Keep going</string>
+    <string name="error">Bad move!</string>
+    <string name="cargando">Loading Puzzles...</string>
     <string name="titulo_cargando">"Please, wait"</string>
-    <string name="jaque">Checkmate</string>
+    <string name="jaque">Mate</string>
     <string name="ataque">Double attack</string>
     <string name="clavada">Nailed</string>
     <string name="defensa">Elimination of Defense</string>
     <string name="rayos">X-rays</string>
-    <string name="nivel_facil">Easy</string>
-    <string name="nivel_medio">Medium</string>
-    <string name="nivel_dificil">Difficult</string>
-    <string name="error_cargar">Unable to search, make sure you have connectivity</string>
-    <string name="cerrar">Logout</string>
-    <string name="salirJuego">Do you want to get out of the game?"</string>
+    <string name="nivel_facil">Begginer</string>
+    <string name="nivel_medio">Intermediate</string>
+    <string name="nivel_dificil">Advanced</string>
+    <string name="error_cargar">The file could not be loaded, please check your network connection</string>
+    <string name="cerrar">Log out</string>
+    <string name="salirJuego">Do you really want to leave the game?"</string>
     <string name="si">Yes</string>
     <string name="no">No</string>
 
@@ -50,6 +51,19 @@
     <string name="hinttupassword">your password</string>
     <string name="hintrepitepassword">repeat your password</string>
     <string name="hinttuemail">your email</string>
+
+    <string name="erronea">Contraseña Erronea</string>
+    <string name="registrado">El email no está registrado</string>
+    <string name="usuario">Usuario logueado</string>
+    <string name="error2">Se ha producido un error desconocido</string>
+    <string name="falta_contraseña">Introduce un password</string>
+    <string name="falta_correo">Introduce un email válido</string>
+    <string name="conectividad">No tienes conectividad</string>
+    <string name="repite_contraseña">Introduce la misma contraseña</string>
+    <string name="email_valido">Introduce un email válido</string>
+    <string name="email_registrado">El email ya está registrado</string>
+    <string name="registro_realizado">Registro realizado</string>
+    <string name="email2">El email y la contraseña ya están registrados</string>
 
     <string-array name="idioma">
         <item>Spanish</item>
@@ -106,8 +120,19 @@
         <item>X-rays</item>
     </string-array>
 
+    <string-array name="frasesFallo">
+        <item>Could you do it better?</item>
+        <item>¡Nice try!</item>
+        <item>¡This way, you will not get it!</item>
+        <item>If you find troubles you can use help</item>
+    </string-array>
 
-
+    <string-array name="frasesAcierto">
+        <item>Keep going!</item>
+        <item>You are in the good way!</item>
+        <item>Your daddy will be proud of you!</item>
+        <item>¡Good job!</item>
+    </string-array>
 
 
 
@@ -117,6 +142,22 @@
 
     <string name="custom_icon_key">tableroColores</string>
     <string name="icon_label">Color of Board</string>
+
+    <string name="jaque_facil">Mate Begginer</string>
+    <string name="jaque_medio">Mate Intermediate</string>
+    <string name="jaque_dificil">Mate Advanced</string>
+    <string name="ataque_facil">Double attack Begginer</string>
+    <string name="ataque_medio">Double attack Intermediate</string>
+    <string name="ataque_dificil">Double attack Advanced</string>
+    <string name="clavada_facil">Nailed Begginer</string>
+    <string name="clavada_media">Nailed Intermediate</string>
+    <string name="clavada_dificil">Nailed Advanced</string>
+    <string name="eliminacion_facil">Elimination of defense Begginer</string>
+    <string name="eliminacion_media">Elimination of defense Intermediate</string>
+    <string name="eliminacion_dificil">Elimination of defense Advanced</string>
+    <string name="rayosX_facil">X-Ray Begginer</string>
+    <string name="rayosX_medio">X-Ray Intermediate</string>
+    <string name="rayosX_dificil">X-Ray Advanced</string>
 
 </resources>
 

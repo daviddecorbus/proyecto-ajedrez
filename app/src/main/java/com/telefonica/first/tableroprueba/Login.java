@@ -101,16 +101,16 @@ private String password;
                     com.execute("http://caissamaister.esy.es/login2.php",parametro);
                 }
                 else {
-                    Toast.makeText(getActivity(), "No tienes conectividad", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.conectividad, Toast.LENGTH_SHORT).show();
                 }
 
             }else{
                 System.out.println("introduce un password");
-                Toast.makeText(getActivity(), "Introduce un password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.falta_contraseña, Toast.LENGTH_SHORT).show();
             }
         }else{
             System.out.println("introduce un email válido");
-            Toast.makeText(getActivity(), "Introduce un email válido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.falta_correo, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -168,13 +168,13 @@ private String password;
                 }
 
                 if(codigo.equalsIgnoreCase("-1")){
-                    Toast.makeText(getActivity(),"Contraseña Erronea",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),R.string.erronea,Toast.LENGTH_SHORT).show();
                 }
                 else if(codigo.equalsIgnoreCase("1")){
-                    Toast.makeText(getActivity(), "El email no está registrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.registrado, Toast.LENGTH_SHORT).show();
                 }
                 else if (codigo.equalsIgnoreCase("2")) {
-                    Toast.makeText(getActivity(), "Usuario logueado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.usuario, Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = getContext().getSharedPreferences("com.telefonica.first.tableroprueba_preferences", MODE_PRIVATE).edit();
                     editor.putString("correo", email);
                     editor.putString("admin","no");
@@ -184,7 +184,7 @@ private String password;
                     startActivity(intent);
                 }
                 else if (codigo.equalsIgnoreCase("3")) {
-                    Toast.makeText(getActivity(), "Usuario logueado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.usuario, Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = getContext().getSharedPreferences("com.telefonica.first.tableroprueba_preferences", MODE_PRIVATE).edit();
                     editor.putString("correo", email);
                     editor.putString("admin","si");
@@ -194,7 +194,7 @@ private String password;
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(getActivity(), "Se ha producido un error desconocido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.error2, Toast.LENGTH_SHORT).show();
                 }
             }
             catch(JSONException ex){

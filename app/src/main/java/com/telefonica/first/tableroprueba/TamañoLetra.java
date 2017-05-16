@@ -12,7 +12,7 @@ public class TamañoLetra {
         if(relacion<=2){
             return 16;
         }else if(relacion>2 && relacion<=2.3){
-            return 24;
+            return 22;
         }else if(relacion>2.3 && relacion<=2.8){
             return 28;
         }else if(relacion>2.8 && relacion<=3.3){

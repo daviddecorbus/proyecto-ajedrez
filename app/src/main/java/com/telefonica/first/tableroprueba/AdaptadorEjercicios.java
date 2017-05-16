@@ -34,13 +34,13 @@ public class AdaptadorEjercicios extends ArrayAdapter {
         textView.setText(String.valueOf(ejercicios[position].getNivel()));
         switch (ejercicios[position].getEstado()){
             case "sin-empezar":
-                textView.setBackgroundColor(Color.RED);
+                textView.setBackground(getContext().getResources().getDrawable(R.drawable.sinempezar));
                 break;
             case "empezada":
-                textView.setBackgroundColor(Color.YELLOW);
+                textView.setBackground(getContext().getResources().getDrawable(R.drawable.empezado));
             break;
             case "terminada":
-                textView.setBackgroundColor(Color.GREEN);
+                textView.setBackground(getContext().getResources().getDrawable(R.drawable.terminado));
                 break;
 
             default:

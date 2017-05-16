@@ -159,9 +159,9 @@ public class CrearJugadas extends AppCompatActivity {
                                     String descripcionFinal2 = "";
                                     for (int i = 0; i < descripcion.length ; i++) {
                                         if (i==descripcion.length-1){
-                                            descripcionFinal2 = descripcionFinal2 + descripcion[i];
+                                            descripcionFinal2 = descripcionFinal2 + descripcion2[i];
                                         }else {
-                                            descripcionFinal2 = descripcionFinal2 + descripcion[i] + "%20";
+                                            descripcionFinal2 = descripcionFinal2 + descripcion2[i] + "%20";
                                         }
                                     }
 
@@ -286,8 +286,8 @@ public class CrearJugadas extends AppCompatActivity {
             ImageView img = (ImageView) findViewById(resID); //Inicializa la imagen con ese id
             int imagenID = getResources().getIdentifier(piezas[i], "drawable", getPackageName());
             img.setImageResource(imagenID);
-            img.getLayoutParams().height = (ancho - 40) / 8; //Le da altura
-            img.getLayoutParams().width = (ancho - 40) / 8; //Le da anchura
+            img.getLayoutParams().height = (ancho - 120) / 8; //Le da altura
+            img.getLayoutParams().width = (ancho - 120) / 8; //Le da anchura
             img.setTag(piezas[i]);
             img.setOnTouchListener(new MyTouchListener());
         }

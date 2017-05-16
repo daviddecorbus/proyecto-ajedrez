@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.ContextMenu;
 import android.view.Display;
 import android.view.WindowManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -27,10 +29,7 @@ public class SplashScreen extends AppCompatActivity {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
-        SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
-        correo = pre.getString("correo", "");
-        String idioma = pre.getString("idioma", "es");
-        Lenguaje.setLocale(this, idioma); // Inicializa el idioma
+
 
         setContentView(R.layout.activity_splash_screen);
 
@@ -40,6 +39,11 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()); //Inicializa las preferencias
+                correo = pre.getString("correo", "");
+                String idioma = pre.getString("idioma", "es");
+                Lenguaje.setLocale(SplashScreen.this, idioma); // Inicializa el idioma
+
                 Intent intent;
                 if(correo.equals("")){
                     intent = new Intent(SplashScreen.this, MenuPrincipal.class);

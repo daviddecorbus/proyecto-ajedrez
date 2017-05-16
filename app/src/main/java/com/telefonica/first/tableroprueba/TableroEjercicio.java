@@ -6,11 +6,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,7 +29,9 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Random;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -64,6 +72,9 @@ public class TableroEjercicio extends AppCompatActivity {
     protected String estadoInicial;
     private int id;
     protected static String correo;
+    protected String [] frasesFallo;
+    protected String [] frasesAcierto;
+    public static HashMap<Integer,String> tipoNivel = new HashMap<>();
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -85,9 +96,11 @@ public class TableroEjercicio extends AppCompatActivity {
         recuperarDatos(); //Recupera los datos
         Ejercicio ejer = (Ejercicio) getIntent().getSerializableExtra("ejercicio");
         ejercicio = ejer;
-       cargarEjercicio(ejercicio); //Recupera los datos del tablero
+        cargarEjercicio(ejercicio); //Recupera los datos del tablero
         tamañoTabla(); // Ajusta el tablero
         pintarTablero(); //Pinta las piezas
+        frasesFallo = getResources().getStringArray(R.array.frasesFallo);
+        frasesAcierto = getResources().getStringArray(R.array.frasesAcierto);
     }
 
     public void fichasRecambio(View v) {
@@ -109,7 +122,7 @@ public class TableroEjercicio extends AppCompatActivity {
     private void recuperarDatos(){
         SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
         idioma = pre.getString("idioma", "es");
-        setTitle(getString(R.string.ejercicio));
+
         boolean coordenadas = pre.getBoolean("coordenadas", false  );
         boolean guia = pre.getBoolean("guia", true);
         sonido = pre.getBoolean("sonido", true);
@@ -208,6 +221,8 @@ public class TableroEjercicio extends AppCompatActivity {
         if(estadoInicial.equalsIgnoreCase("sin-empezar")){
             grabarPartida();
         }
+        setTitle(getString(R.string.ejercicio)+" " + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel());//recupera el nivel de l ejercicio y lo vuelca en el title
+
        }
 
     /**
@@ -313,6 +328,7 @@ public class TableroEjercicio extends AppCompatActivity {
             }
         }else{ //Si la pieza esta resaltada
             System.out.println("estamos en el resaltado true");
+            Random r = new Random();
             if(tableroPiezas.getPiezas()[x][y].isResaltado()){ //Si la pieza esta resaltada
                 idFicha2 =  ejercicio.getTablero()[x][y]; //guarda el id de la pieza comida por si el movimiento es malo poder recuperarla
                 ejercicio.getTablero()[x][y]= idFicha; //Le pasa el id de la pieza al tablero
@@ -357,7 +373,7 @@ public class TableroEjercicio extends AppCompatActivity {
                         grabarPartida();
                         activarTablero(false);
                     }else {
-                        crearAlerta(getString(R.string.continua),0);
+                        crearAlerta(frasesAcierto[r.nextInt(frasesAcierto.length)],0);
 
                         movimientoRobot();
                     }
@@ -372,7 +388,7 @@ public class TableroEjercicio extends AppCompatActivity {
                             pintarTablero(); //Pinta el tablero
                         }
                     }, 1000);
-                    crearAlerta(getString(R.string.error),1);
+                    crearAlerta(frasesFallo[r.nextInt(frasesFallo.length)],1);
                 }
             }
         }
@@ -495,6 +511,7 @@ public class TableroEjercicio extends AppCompatActivity {
      */
     private void crearAlerta(String texto,int color)
     {
+        Typeface type = Typeface.createFromAsset(getAssets(),"font/kalambold.ttf");
         LayoutInflater inflater = getLayoutInflater();
         View layout = null;
         if(color == 0)
@@ -508,16 +525,42 @@ public class TableroEjercicio extends AppCompatActivity {
 
         TextView text = (TextView) layout.findViewById(R.id.text);
         text.setText(texto);
+        text.setTypeface(type);
 
         Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.BOTTOM, 0,100);
+        toast.setGravity(Gravity.BOTTOM , 0,50);
+
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
 
 
+
+
+
     }
 
+    /**
+     * Permite compartir la imagen del teblero
+     */
+    public void compartirTablero(View v){
+        Bitmap cs = null;
+        tableroVisual.setDrawingCacheEnabled(true);
+        tableroVisual.buildDrawingCache(true);
+        cs = Bitmap.createBitmap(tableroVisual.getDrawingCache());
+        Canvas canvas = new Canvas(cs);
+        tableroVisual.draw(canvas);
+        canvas.save();
+        tableroVisual.setDrawingCacheEnabled(false);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(),cs,
+                "Ejercicio: " + ejercicio.getNivel(), null);
+        Uri uri = Uri.parse(path);
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("image/png");
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(sharingIntent,"Comparte tu tablero de Caissa"));
+
+    }
     /**
      * Grabar una partida en la Base de Datos
      */
@@ -525,6 +568,29 @@ public class TableroEjercicio extends AppCompatActivity {
         GrabarPartida com = new GrabarPartida();
         String parametro = "correo=" + correo + "&estado=" + estadoInicial + "&idejercicio=" + ejercicio.getId();
         com.execute("http://caissamaister.esy.es/grabarPartida.php",parametro);
+    }
+
+    /**
+     * Nos devuelve El tipo  y el nivel del ejercicio a partir del id_nivel
+     */
+    public String obtenerTipo(int id) {
+        tipoNivel.put(1, getString(R.string.jaque_facil));
+        tipoNivel.put(2, getString(R.string.jaque_medio));
+        tipoNivel.put(3, getString(R.string.jaque_dificil));
+        tipoNivel.put(4, getString(R.string.ataque_facil));
+        tipoNivel.put(5, getString(R.string.ataque_medio));
+        tipoNivel.put(6, getString(R.string.ataque_dificil));
+        tipoNivel.put(7, getString(R.string.clavada_facil));
+        tipoNivel.put(8, getString(R.string.clavada_media));
+        tipoNivel.put(9, getString(R.string.clavada_dificil));
+        tipoNivel.put(10, getString(R.string.eliminacion_facil));
+        tipoNivel.put(11,getString(R.string.eliminacion_media));
+        tipoNivel.put(12, getString(R.string.eliminacion_dificil));
+        tipoNivel.put(13,getString(R.string.rayosX_facil));
+        tipoNivel.put(14, getString(R.string.rayosX_medio));
+        tipoNivel.put(15,getString(R.string.rayosX_dificil));
+
+        return tipoNivel.get(id);
     }
 
     /**

@@ -39,6 +39,7 @@ public class ListaEjercicios extends AppCompatActivity {
     Ejercicio [] ejercicios_usuario;
     String tipo;
     String nivel;
+    String idioma;
 
 
 
@@ -103,6 +104,8 @@ public class ListaEjercicios extends AppCompatActivity {
         //Recuperamos el tipo y el nivel
         tipo = bundle.getString("tipo");
         nivel = bundle.getString("nivel");
+        SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
+        idioma = pre.getString("idioma", "es");
         if(tipo.split(" ").length >=2){
            tipo = tipo.replaceAll(" ","-");
 
@@ -198,11 +201,15 @@ public class ListaEjercicios extends AppCompatActivity {
                     String movimientos = job.getString("movimientos");
                     String tablero = job.getString("tablero");
                     //String estado = job.getString("estado");
+                    int id_nivel = Integer.parseInt(job.getString("id_nivel"));
 
                     String texto = job.getString("descripcion");
                     String textoIngles = job.getString("descripcionIngles");
                     int id = job.getInt("id");
-                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,textoIngles,contador,id,"sin-empezar");
+                    if(idioma.equalsIgnoreCase("es"))
+                    ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,"sin-empezar",id_nivel);
+                    else
+                        ejercicios[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),textoIngles,contador,id,"sin-empezar",id_nivel);
                     contador++;
                 }
                 ComunicacionTask2 com = new ComunicacionTask2();
@@ -279,8 +286,9 @@ public class ListaEjercicios extends AppCompatActivity {
                     String estado = job.getString("estado");
                     String texto = job.getString("descripcion");
                     String textoIngles = job.getString("descripcionIngles");
+                    int id_nivel = Integer.parseInt(job.getString("id_nivel"));
                     int id = job.getInt("id");
-                    ejercicios_usuario[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,textoIngles,contador,id,estado);
+                    ejercicios_usuario[i]= new Ejercicio(convertirTablero(tablero.split("-")),cantidad_movimientos,color,movimientos.split(","),texto,contador,id,estado,id_nivel);
                     contador++;
                 }
 

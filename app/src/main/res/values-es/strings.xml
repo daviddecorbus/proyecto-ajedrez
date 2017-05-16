@@ -3,13 +3,14 @@
     <string name="logearse">Logearse</string>
     <string name="registrarse">Registrarse</string>
     <string name="app_name">Tablero</string>
-    <string name="tipoEjercicios">Menu de Ejercicios</string>
+    <string name="tipoEjercicios">Menú de Ejercicios</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="titulo_sugerencia">"Introduce tu sugerencia:"</string>
     <string name="crearTablero">Crear Tablero</string>
-    <string name="action_settings">Menu</string>
-    <string name="menu_configuracion">Configuracion</string>
+    <string name="action_settings">Menú</string>
+    <string name="menu_configuracion">Configuración</string>
     <string name="ejercicio">Ejercicio</string>
-    <string name="ayuda">Ayuda</string>
+    <string name="sugerencia">Sugerencia</string>
     <string name="categoria1">TABLERO</string>
     <string name="categoria2">IDIOMA</string>
     <string name="categoria3">Admin</string>
@@ -17,24 +18,24 @@
     <string name="tablero_descripcion"></string>
     <string name="coordenadas_titulo">Mostrar Coordenadas</string>
     <string name="coordenadas_descripcion">Mostrar coordenadas del tablero [a,h] [1-8]</string>
-    <string name="guia_titulo">Mostrar Guia</string>
-    <string name="guia_descripcion">Mostrar Guia</string>
+    <string name="guia_titulo">Mostrar Guía</string>
+    <string name="guia_descripcion">Mostrar Guía</string>
     <string name="idioma_titulo">Lenguaje</string>
     <string name="idioma_descripcion">Permite elegir el lenguage de la aplicación</string>
     <string name="default_summary">Elige el color del tablero</string>
-    <string name="finalizado">Lo Lograste</string>
+    <string name="finalizado">¡Lo Lograste!</string>
     <string name="continua">Sigue así</string>
     <string name="error">Puedes hacerlo mejor</string>
     <string name="cargando">Cargando Ejercicios...</string>
     <string name="titulo_cargando">"Por favor, espera"</string>
-    <string name="nivel_facil">Facil</string>
+    <string name="nivel_facil">Fácil</string>
     <string name="nivel_medio">Medio</string>
-    <string name="nivel_dificil">Dificil</string>
+    <string name="nivel_dificil">Difícil</string>
     <string name="error_cargar">No se ha podido realizar la búsqueda, comprueba que tienes conectividad</string>
     <string name="jaque">Jaque Mate</string>
     <string name="ataque">Ataque Doble</string>
     <string name="clavada">Clavada</string>
-    <string name="defensa">Eliminacion de la Defensa</string>
+    <string name="defensa">Eliminación de la Defensa</string>
     <string name="rayos">Rayos X</string>
     <string name="cerrar">Cerrar Sesión</string>
     <string name="salirJuego">¿Quieres salir del juego?</string>
@@ -44,23 +45,50 @@
 
     <string name="identificate">Identifícate</string>
     <string name="registrate">Regístrate</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
     <string name="btidentificate">IDENTIFÍCATE</string>
     <string name="btregistrate">REGÍSTRATE</string>
-    <string name="hinttuemail">tu email</string>
-    <string name="hinttupassword">tu password</string>
-    <string name="hintrepitepassword">repite el password</string>
+    <string name="hinttuemail">Introduce tu correo</string>
+    <string name="hinttupassword">Introduce tu contraseña</string>
+    <string name="hintrepitepassword">Repite la contraseña</string>
+    <string name="erronea">Contraseña Erronea</string>
+    <string name="registrado">El email no está registrado</string>
+    <string name="usuario">Usuario logueado</string>
+    <string name="error2">Se ha producido un error desconocido</string>
+    <string name="falta_contraseña">Introduce un password</string>
+    <string name="falta_correo">Introduce un email válido</string>
+    <string name="conectividad">No tienes conectividad</string>
+    <string name="repite_contraseña">Introduce la misma contraseña</string>
+    <string name="email_valido">Introduce un email válido</string>
+    <string name="email_registrado">El email ya está registrado</string>
+    <string name="registro_realizado">Registro realizado</string>
+    <string name="email2">El email y la contraseña ya están registrados</string>
 
     <string-array name="idioma">
         <item>Español</item>
-        <item>Ingles</item>
+        <item>Inglés</item>
     </string-array>
 
     <string-array name="idioma_valor">
         <item>es</item>
         <item>en</item>
     </string-array>
+
+    <string-array name="frasesFallo">
+        <item>¡Puedes hacerlo mejor!</item>
+        <item>¡Buen intento!</item>
+        <item>¡Así no lo conseguirás!</item>
+        <item>Si te resulta difícil puedes usar la ayuda</item>
+    </string-array>
+
+    <string-array name="frasesAcierto">
+        <item>¡Sigue así!</item>
+        <item>¡Vas por buen camino!</item>
+        <item>¡Tu padre estaría orgulloso de ti!</item>
+        <item>¡Bien hecho!</item>
+    </string-array>
+
 
     <string-array name="iconName">
         <item>Azul Claro</item>
@@ -102,7 +130,7 @@
         <item>Jaque Mate</item>
         <item>Ataque Doble</item>
         <item>Clavada</item>
-        <item>Eliminacion de la Defensa</item>
+        <item>Eliminación de la Defensa</item>
         <item>Rayos X</item>
     </string-array>
 
@@ -113,6 +141,24 @@
 
     <string name="custom_icon_key">tableroColores</string>
     <string name="icon_label">Color tablero</string>
+
+    <string name="jaque_facil">Jaque Fácil</string>
+    <string name="jaque_medio">Jaque Medio</string>
+    <string name="jaque_dificil">Jaque difícil</string>
+    <string name="ataque_facil">Ataque fácil</string>
+    <string name="ataque_medio">Ataque Medio</string>
+    <string name="ataque_dificil">Ataque Difícil</string>
+    <string name="clavada_facil">Clavada fácil</string>
+    <string name="clavada_media">Clavada Medio</string>
+    <string name="clavada_dificil">Clavada Difícil</string>
+    <string name="eliminacion_facil">Eliminación fácil</string>
+    <string name="eliminacion_media">Eliminación Medio</string>
+    <string name="eliminacion_dificil">Eliminación Difícil</string>
+    <string name="rayosX_facil">RayosX fácil</string>
+    <string name="rayosX_medio">RayosX Medio</string>
+    <string name="rayosX_dificil">RayosX Difícil</string>
+
+
 
 </resources>
 

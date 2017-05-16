@@ -1,6 +1,7 @@
 package com.telefonica.first.tableroprueba;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -14,22 +15,28 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static com.telefonica.first.tableroprueba.ConversorCasillas.conversor;
+
 
 public class Configuracion extends PreferenceActivity  {
 
     private Context mContext;
-    private PreferenceScreen ayuda;
+    private PreferenceScreen sugerencia;
     private CheckBoxPreference guia;
    private ListPreference lenguaje;
    private CheckBoxPreference coordenadas;
@@ -117,11 +124,55 @@ public class Configuracion extends PreferenceActivity  {
             }
         });
 
+        sugerencia = (PreferenceScreen) preferencias.findPreference("sugerencia");
+        sugerencia.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+              crearAlerta();
+                return true;
+            }
+        });
+
         if(datos.getString("admin").equalsIgnoreCase("no")){
             notificationsCategory.setTitle("");
             notificationsCategory.removePreference(admin);
         }
 
+    }
+    private void crearAlerta(){
+
+
+        LayoutInflater li = LayoutInflater.from(this);
+        View vista = li.inflate(R.layout.sugerencia, null);
+
+        final AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
+        dialogo.setTitle(R.string.titulo_sugerencia);
+        dialogo.setView(vista);
+
+
+        final EditText cajaSugerencia = (EditText) vista.findViewById(R.id.edSugerencias);
+
+        dialogo
+                .setCancelable(false)
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                        if(!cajaSugerencia.getText().equals("")){
+                            MandarSugerencia com = new MandarSugerencia();
+                            String parametro = "email=" + TableroEjercicio.correo + "&texto=" + cajaSugerencia.getText().toString().replaceAll(" ", "%20");
+                            com.execute("http://caissamaister.esy.es/Sugerencia.php",parametro);
+                        }
+                    }
+
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                        dialogBox.dismiss();
+                    }
+
+                });
+
+        AlertDialog alertDialogAndroid = dialogo.create();
+        alertDialogAndroid.show();
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

@@ -54,10 +54,10 @@
 
     </PreferenceScreen>
     <PreferenceScreen
-        android:key="informacion"
+        android:key="sugerencia"
         android:summary=""
         android:icon="@drawable/ic_settings_help"
-        android:title="@string/ayuda" />
+        android:title="@string/sugerencia" />
     <PreferenceScreen
         android:key="cerrar"
         android:summary=""

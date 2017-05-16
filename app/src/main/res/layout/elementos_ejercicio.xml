@@ -7,6 +7,10 @@
         android:id="@+id/nivel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="TextView" />
+        android:textSize="35sp"
+        android:gravity="center"
+        android:text="TextView"
+        android:background="@drawable/toast"
+        android:textColor="#ffff"
+        />
 </LinearLayout>
