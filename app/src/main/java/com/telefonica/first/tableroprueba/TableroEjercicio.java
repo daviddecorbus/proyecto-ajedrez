@@ -221,7 +221,7 @@ public class TableroEjercicio extends AppCompatActivity {
         if(estadoInicial.equalsIgnoreCase("sin-empezar")){
             grabarPartida();
         }
-        setTitle(getString(R.string.ejercicio)+" " + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel());//recupera el nivel de l ejercicio y lo vuelca en el title
+        setTitle(obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel());//recupera el nivel de l ejercicio y lo vuelca en el title
 
        }
 
@@ -501,6 +501,10 @@ public class TableroEjercicio extends AppCompatActivity {
             }
             return true;
         }
+        else if (id == R.id.action_compartirFoto){
+            compartirTablero();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -533,17 +537,12 @@ public class TableroEjercicio extends AppCompatActivity {
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
-
-
-
-
-
     }
 
     /**
      * Permite compartir la imagen del teblero
      */
-    public void compartirTablero(View v){
+    public void compartirTablero(){
         Bitmap cs = null;
         tableroVisual.setDrawingCacheEnabled(true);
         tableroVisual.buildDrawingCache(true);

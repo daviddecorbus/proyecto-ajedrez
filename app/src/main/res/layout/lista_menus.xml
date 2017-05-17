@@ -3,12 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#fff"
     >
 
     <ExpandableListView
         android:id="@+id/listaMenus"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:dividerHeight="1dp" />
+        android:layout_height="wrap_content"
+        android:divider="#000"
+        android:dividerHeight="0dp"
+        android:textColor="#6d6fc9" />
 
 </RelativeLayout>

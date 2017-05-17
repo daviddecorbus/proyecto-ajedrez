@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
         tamaño();
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
 
-                .setDefaultFontPath("font/apercubolditalic.ttf")
+                .setDefaultFontPath("font/apercubold.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

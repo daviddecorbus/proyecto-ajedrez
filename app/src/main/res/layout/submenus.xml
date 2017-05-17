@@ -2,22 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:gravity="center_vertical"
-android:paddingTop="3dip"
-android:paddingBottom="3dip"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="3dip"
+    android:paddingTop="3dip"
     >
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="80dip"
-        android:layout_height="80dip"
-        android:layout_marginBottom="10dip"
-        android:layout_marginLeft="5dip"
-        android:layout_marginTop="10dip"
-        android:paddingTop="10dip"
-        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,17 +16,32 @@ android:paddingBottom="3dip"
         android:layout_marginLeft="6dip"
         android:layout_marginRight="6dip"
         android:layout_weight="1"
+
         android:orientation="vertical">
+
+
+        <!--modificado el colo de texto de facul medio dificil-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="100dip"
+            android:layout_gravity="center"
+            app:srcCompat="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/childItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:maxLines="2"
-            android:text="Facil"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:text="Fácil"
+            android:textColor="#6d6fc9"
+            android:textSize="22sp" />
 
     </LinearLayout>
 

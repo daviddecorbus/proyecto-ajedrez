@@ -79,13 +79,13 @@
         <item>¡Puedes hacerlo mejor!</item>
         <item>¡Buen intento!</item>
         <item>¡Así no lo conseguirás!</item>
-        <item>Si te resulta difícil puedes usar la ayuda</item>
+        <item>¡Piensa un poco!</item>
     </string-array>
 
     <string-array name="frasesAcierto">
         <item>¡Sigue así!</item>
         <item>¡Vas por buen camino!</item>
-        <item>¡Tu padre estaría orgulloso de ti!</item>
+        <item>¡Muy bien!</item>
         <item>¡Bien hecho!</item>
     </string-array>
 
@@ -130,7 +130,7 @@
         <item>Jaque Mate</item>
         <item>Ataque Doble</item>
         <item>Clavada</item>
-        <item>Eliminación de la Defensa</item>
+        <item>Eliminacion de la Defensa</item>
         <item>Rayos X</item>
     </string-array>
 

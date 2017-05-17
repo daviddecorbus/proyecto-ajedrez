@@ -9,6 +9,19 @@
     tools:showIn="@layout/activity_main">
 
 
+    <TextView
+        android:id="@+id/textoEjercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_horizontal"
+        android:text="TextView"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.006" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -668,18 +681,6 @@
         </TableRow>
     </TableLayout>
 
-    <TextView
-        android:id="@+id/textoEjercicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top|center_horizontal"
-        android:text="TextView"
-        android:textSize="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/tablero" />
-
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -832,19 +833,5 @@
         android:orientation="horizontal"
         tools:layout_editor_absoluteY="20dp"
         tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compartir"
-        android:onClick="compartirTablero"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.974" />
 
 </android.support.constraint.ConstraintLayout>

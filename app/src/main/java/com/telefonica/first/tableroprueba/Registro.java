@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +29,8 @@ import java.nio.charset.Charset;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.dpi;
 
 
 public class Registro extends Fragment{
@@ -69,6 +73,7 @@ public class Registro extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ajustarTamanos();
         // Asigna el método registro() al botón del activity_registro
         Button boton = (Button) view.findViewById(R.id. registro);
         boton.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +81,40 @@ public class Registro extends Fragment{
             public void onClick(View v) {
                 registro();
             }});
+    }
+    public void ajustarTamanos(){
+        TextView text = (TextView)  getView().findViewById(R.id.tvregistro);
+        text.setTextSize(TamañoLetra.tamañoLetraLogin(ancho,dpi));
+        TextView text2 = (TextView)  getView().findViewById(R.id.tvEmail2);
+        text2.setTextSize(TamañoLetra.tamañoLetraEmailPassword(ancho,dpi));
+        TextView text3 = (TextView)  getView().findViewById(R.id.tvTexto2);
+        text3.setTextSize(TamañoLetra.tamañoLetraEmailPassword(ancho,dpi));
+
+        EditText text4 = (EditText) getView().findViewById(R.id.Email);
+        text4.setTextSize(TamañoLetra.tamañoLetraEditText(ancho,dpi));
+        EditText text5 = (EditText) getView().findViewById(R.id.password);
+        text5.setTextSize(TamañoLetra.tamañoLetraEditText(ancho,dpi));
+        EditText text6 = (EditText) getView().findViewById(R.id.password2);
+        text6.setTextSize(TamañoLetra.tamañoLetraEditText(ancho,dpi));
+
+        Button boton = (Button) getView().findViewById(R.id.registro);
+        boton.setTextSize(TamañoLetra.tamañoLetraBoton(ancho,dpi));
+        boton.getLayoutParams().width=TamañoLetra.tamañoAnchoBoton(ancho,dpi);
+        boton.getLayoutParams().height=TamañoLetra.tamañoAltoBoton(ancho,dpi);
+
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+
+        LinearLayout linear1 = (LinearLayout) getView().findViewById(R.id.linearEmail2);
+        params.setMargins(TamañoLetra.margenesLinearIzquierda(ancho,dpi),TamañoLetra.margenesLinearTop(ancho,dpi),0,0);
+        linear1.setLayoutParams(params);
+
+       /* LinearLayout linear3 = (LinearLayout) getView().findViewById(R.id.linearPass);
+        params.setMargins(TamañoLetra.margenesLinearIzquierda(ancho,dpi),30,0,0);
+        linear3.setLayoutParams(params);*/
     }
     /**
      * Recupera los datos de los EditText y revisa que sean datos válidos (si son válidos llama al AsyncTask crearRegistro si no muestra

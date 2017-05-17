@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +29,8 @@ import java.nio.charset.Charset;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.dpi;
 
 
 public class Login extends  Fragment {
@@ -55,6 +59,7 @@ private String password;
        /* LinearLayout linear = (LinearLayout) getView().findViewById(R.id.linear);
        linear.getLayoutParams().width = ancho-(ancho/3);*/
         // Asigna el método login() al botón del activity_login
+        ajustarTamanos();
         Button boton = (Button) view.findViewById(R.id. btEnviar);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +67,36 @@ private String password;
                 login();
             }});
     }
+    public void ajustarTamanos(){
+        TextView text = (TextView)  getView().findViewById(R.id.login);
+        text.setTextSize(TamañoLetra.tamañoLetraLogin(ancho,dpi));
+        TextView text2 = (TextView)  getView().findViewById(R.id.tvEmail);
+        text2.setTextSize(TamañoLetra.tamañoLetraEmailPassword(ancho,dpi));
+        TextView text3 = (TextView)  getView().findViewById(R.id.tvTexto);
+        text3.setTextSize(TamañoLetra.tamañoLetraEmailPassword(ancho,dpi));
 
+        EditText text4 = (EditText) getView().findViewById(R.id.etEmail);
+        text4.setTextSize(TamañoLetra.tamañoLetraEditText(ancho,dpi));
+        EditText text5 = (EditText) getView().findViewById(R.id.etTexto);
+        text5.setTextSize(TamañoLetra.tamañoLetraEditText(ancho,dpi));
+
+        Button boton = (Button) getView().findViewById(R.id.btEnviar);
+        boton.setTextSize(TamañoLetra.tamañoLetraBoton(ancho,dpi));
+        boton.getLayoutParams().width=TamañoLetra.tamañoAnchoBoton(ancho,dpi);
+        boton.getLayoutParams().height=TamañoLetra.tamañoAltoBoton(ancho,dpi);
+
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+
+        LinearLayout linear1 = (LinearLayout) getView().findViewById(R.id.linearEmail);
+        params.setMargins(TamañoLetra.margenesLinearIzquierda(ancho,dpi),TamañoLetra.margenesLinearTop(ancho,dpi),0,0);
+        linear1.setLayoutParams(params);
+
+
+    }
     /**
      * Comrpueba si hay conexion
      * @return si hay conexion

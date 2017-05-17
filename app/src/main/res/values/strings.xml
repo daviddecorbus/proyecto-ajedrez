@@ -5,7 +5,7 @@
     <string name="app_name">Board</string>
     <string name="tipoEjercicios">Solve puzzles</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="titulo_sugerencia">"Introduce tu sugerencia:"</string>
+    <string name="titulo_sugerencia">"Introduce your suggestion:"</string>
     <string name="crearTablero">Create Board</string>
     <string name="action_settings">Menu</string>
     <string name="menu_configuracion">Settings</string>
@@ -31,7 +31,7 @@
     <string name="jaque">Mate</string>
     <string name="ataque">Double attack</string>
     <string name="clavada">Nailed</string>
-    <string name="defensa">Elimination of Defense</string>
+    <string name="defensa">Defense Elimination</string>
     <string name="rayos">X-rays</string>
     <string name="nivel_facil">Begginer</string>
     <string name="nivel_medio">Intermediate</string>
@@ -42,28 +42,28 @@
     <string name="si">Yes</string>
     <string name="no">No</string>
 
-    <string name="identificate">Sign in</string>
+    <string name="identificate">Log in</string>
     <string name="registrate">Sign up</string>
-    <string name="email">Email</string>
+    <string name="email">E-mail</string>
     <string name="password">Password</string>
-    <string name="btidentificate">SIGN IN</string>
-    <string name="btregistrate">SIGNG UP</string>
-    <string name="hinttupassword">your password</string>
-    <string name="hintrepitepassword">repeat your password</string>
-    <string name="hinttuemail">your email</string>
+    <string name="btidentificate">LOG IN</string>
+    <string name="btregistrate">SIGN UP</string>
+    <string name="hinttupassword">Introduce your password, please</string>
+    <string name="hintrepitepassword">Repeat your password again, please</string>
+    <string name="hinttuemail">Introduce your email address, please</string>
 
-    <string name="erronea">Contraseña Erronea</string>
-    <string name="registrado">El email no está registrado</string>
-    <string name="usuario">Usuario logueado</string>
-    <string name="error2">Se ha producido un error desconocido</string>
-    <string name="falta_contraseña">Introduce un password</string>
-    <string name="falta_correo">Introduce un email válido</string>
-    <string name="conectividad">No tienes conectividad</string>
-    <string name="repite_contraseña">Introduce la misma contraseña</string>
-    <string name="email_valido">Introduce un email válido</string>
-    <string name="email_registrado">El email ya está registrado</string>
-    <string name="registro_realizado">Registro realizado</string>
-    <string name="email2">El email y la contraseña ya están registrados</string>
+    <string name="erronea">Wrong Password, please introduce it again</string>
+    <string name="registrado">E-mail address not found</string>
+    <string name="usuario">Log in user</string>
+    <string name="error2">There was an internal mistake</string>
+    <string name="falta_contraseña">Introduce your password, please</string>
+    <string name="falta_correo">Introduce a correct E-mail address, please</string>
+    <string name="conectividad">You are not connected any network</string>
+    <string name="repite_contraseña">Introduce a correct password, please</string>
+    <string name="email_valido">Introduce a correct E-mail address, please</string>
+    <string name="email_registrado">This E-mail address is already signed up</string>
+    <string name="registro_realizado">Sign up already done</string>
+    <string name="email2">E-mail address and password already signed up</string>
 
     <string-array name="idioma">
         <item>Spanish</item>
@@ -116,7 +116,7 @@
         <item>Checkemate</item>
         <item>Double attack</item>
         <item>Nailed</item>
-        <item>Elimination of Defense</item>
+        <item>Defense Elimination</item>
         <item>X-rays</item>
     </string-array>
 
@@ -124,13 +124,13 @@
         <item>Could you do it better?</item>
         <item>¡Nice try!</item>
         <item>¡This way, you will not get it!</item>
-        <item>If you find troubles you can use help</item>
+        <item>think a little!</item>
     </string-array>
 
     <string-array name="frasesAcierto">
         <item>Keep going!</item>
         <item>You are in the good way!</item>
-        <item>Your daddy will be proud of you!</item>
+        <item>Very good!</item>
         <item>¡Good job!</item>
     </string-array>
 
@@ -152,9 +152,9 @@
     <string name="clavada_facil">Nailed Begginer</string>
     <string name="clavada_media">Nailed Intermediate</string>
     <string name="clavada_dificil">Nailed Advanced</string>
-    <string name="eliminacion_facil">Elimination of defense Begginer</string>
-    <string name="eliminacion_media">Elimination of defense Intermediate</string>
-    <string name="eliminacion_dificil">Elimination of defense Advanced</string>
+    <string name="eliminacion_facil">Defense Elimination Begginer</string>
+    <string name="eliminacion_media">Defense Elimination Intermediate</string>
+    <string name="eliminacion_dificil">Defense Elimination Advanced</string>
     <string name="rayosX_facil">X-Ray Begginer</string>
     <string name="rayosX_medio">X-Ray Intermediate</string>
     <string name="rayosX_dificil">X-Ray Advanced</string>

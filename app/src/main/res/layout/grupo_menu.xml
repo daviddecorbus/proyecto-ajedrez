@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="55dip"
+    android:background="#fff"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/cabeceraMenu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:gravity="center"
         android:paddingLeft="35sp"
         android:text="Ejercicios"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+        android:textStyle="italic"
+        android:textColor="#6d9dc9"/><!--menu de ejercicios-->
 
 </LinearLayout>
