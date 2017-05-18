@@ -89,6 +89,7 @@ public class Configuracion extends PreferenceActivity  {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if(newValue.equals("Español") || newValue.equals("Spanish") ){
                     preference.getEditor().putString("idioma","es");
+                    Lenguaje.setLocale(mContext,"es");
                     setLenguaje("es");
             }
                 else {

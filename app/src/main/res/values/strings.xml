@@ -5,7 +5,7 @@
     <string name="app_name">Board</string>
     <string name="tipoEjercicios">Solve puzzles</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="titulo_sugerencia">"Introduce your suggestion:"</string>
+    <string name="titulo_sugerencia">"Enter your suggestion:"</string>
     <string name="crearTablero">Create Board</string>
     <string name="action_settings">Menu</string>
     <string name="menu_configuracion">Settings</string>
@@ -38,7 +38,8 @@
     <string name="nivel_dificil">Advanced</string>
     <string name="error_cargar">The file could not be loaded, please check your network connection</string>
     <string name="cerrar">Log out</string>
-    <string name="salirJuego">Do you really want to leave the game?"</string>
+    <string name="salirJuego">Do you really want to leave Caissa?"</string>
+    <string name="botonVolver">Back</string>
     <string name="si">Yes</string>
     <string name="no">No</string>
 

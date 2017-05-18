@@ -5,19 +5,19 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:icon="@android:drawable/ic_menu_manage"
-        android:title=""
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Configuracion"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_compartirFoto"
         android:icon="@android:drawable/ic_menu_share"
         android:orderInCategory="50"
-        android:title=""
-        app:showAsAction="always" />
+        android:title="Compartir"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_help"
-        android:icon="@drawable/ic_settings_help"
+        android:icon="@android:drawable/ic_menu_help"
         android:orderInCategory="51"
-        android:title=""
+        android:title="Ayuda"
         app:showAsAction="always" />
 </menu>

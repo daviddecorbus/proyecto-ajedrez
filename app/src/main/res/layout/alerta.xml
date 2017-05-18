@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginTop="20dp"
     android:padding="16dp">
 
     <LinearLayout
@@ -15,15 +16,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="Movimientos: " />
 
         <EditText
             android:id="@+id/edMovimientos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.65"
             android:hint="Introduzca un texto"
-            android:inputType="text" />
+            android:textAlignment="center"
+            android:inputType="text"
+            android:textSize="14dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,15 +40,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="Descripción: " />
 
         <EditText
             android:id="@+id/edDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.58"
             android:hint="Introduzca un texto"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="14dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,6 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="Descripción Ingles: " />
 
         <EditText
@@ -64,6 +72,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="14dp"
+            android:textAlignment="center"
             android:hint="Introduzca un texto"
             android:inputType="text" />
     </LinearLayout>
@@ -78,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="Color Inicial:" />
 
         <Spinner
@@ -97,6 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="Nivel:" />
 
         <Spinner
@@ -116,6 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="Tipo de Juego:" />
 
         <Spinner

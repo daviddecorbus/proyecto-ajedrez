@@ -38,7 +38,8 @@
     <string name="defensa">Eliminación de la Defensa</string>
     <string name="rayos">Rayos X</string>
     <string name="cerrar">Cerrar Sesión</string>
-    <string name="salirJuego">¿Quieres salir del juego?</string>
+    <string name="salirJuego">¿Quieres salir de Caissa?</string>
+    <string name="botonVolver">Volver</string>
     <string name="si">Sí</string>
     <string name="no">No</string>
 

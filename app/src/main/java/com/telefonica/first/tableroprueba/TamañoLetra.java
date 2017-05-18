@@ -139,4 +139,19 @@ public class TamañoLetra {
             return 250;
         }
     }
+    public static int tamañoLetraListadoMenu(float ancho, float dpi){
+        float relacion = ancho/dpi;
+        System.out.println("el ancho dentro de tamañoLetra es "+ancho + " dpi es "+dpi +"la relacion es "+relacion);
+        if(relacion<=2){//auchan
+            return 20;
+        }else if(relacion>2 && relacion<=2.3){//htc
+            return 22;
+        }else if(relacion>2.3 && relacion<=2.8){
+            return 24;
+        }else if(relacion>2.8 && relacion<=3.3){
+            return 26;
+        }else{
+            return 36;
+        }
+    }
 }

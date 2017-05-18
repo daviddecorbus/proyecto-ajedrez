@@ -1,5 +1,6 @@
 package com.telefonica.first.tableroprueba;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -27,6 +30,7 @@ public class ListadoMenu extends AppCompatActivity{
 
     private AdaptadorMenu adaptadorMenu;
     private ExpandableListView listaExpandible;
+    private int posicion;
 
 
     /**
@@ -51,6 +55,58 @@ public class ListadoMenu extends AppCompatActivity{
         return true;
     }
 
+    public void uno(View view){
+        String nivel = "";
+        ImageView imagen = (ImageView) view;
+        switch (imagen.getTag().toString()){
+            case "1":
+                nivel = "Facil";
+                break;
+            case "2":
+                nivel = "Medio";
+                break;
+            case "3":
+                nivel = "Dificil";
+                break;
+        }
+        //Obtiene la cabecera del grupo
+        InformacionGrupo cabecera = listaGrupos.get(posicion);
+
+       // Toast.makeText(this, c, Toast.LENGTH_SHORT).show();
+
+        Intent i = new Intent(getApplicationContext(),ListaEjercicios.class);
+
+        String tipo =  cabecera.getNombre();
+
+        if(idioma.equals("en") || idioma.equals("es")) {
+            switch (tipo) {
+                case "Mate":
+                    tipo = "Jaque Mate";
+                    break;
+                case "Double attack":
+                    tipo = "Ataque Doble";
+                    break;
+                case "Nailed":
+                    tipo = "Clavada";
+                    break;
+                case "Defense Elimination":
+                    tipo = "Eliminacion de la Defensa";
+                    break;
+                case "X-rays":
+                    tipo = "Rayos X";
+                    break;
+                case "Eliminación de la Defensa":
+                    tipo = "Eliminacion de la Defensa";
+                    break;
+
+            }
+
+            i.putExtra("tipo", tipo);
+            i.putExtra("nivel", nivel);
+            startActivity(i);
+        }
+    }
+
     /**
      * Opciones del Menu
      * @param item Opcion del menu
@@ -68,12 +124,27 @@ public class ListadoMenu extends AppCompatActivity{
             SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
             String admin = pre.getString("admin", "no");
             intent.putExtra("admin",admin);
-            startActivity(intent);
+            startActivityForResult(intent,1);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+
+            case 1:
+                if(resultCode == Activity.RESULT_OK){
+                    //Devuelve valores de Preferencia
+                    // boolean guia = data.getExtras().getBoolean("guiaActivada");
+                    SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this); //Inicializa las preferencias
+                    String idioma = pre.getString("idioma", "es");
+                    Lenguaje.setLocale(ListadoMenu.this, idioma); // Inicializa el idioma
+                }
+                break;
+
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,60 +173,12 @@ public class ListadoMenu extends AppCompatActivity{
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //Obtiene la cabecera del grupo
-                InformacionGrupo cabecera = listaGrupos.get(groupPosition);
+                //InformacionGrupo cabecera = listaGrupos.get(groupPosition);
                 //Obtiene la informacion de un submenu
-                ChildInfo subCabecera =  cabecera.getSubmenus().get(childPosition);
-                Intent i = new Intent(getApplicationContext(),ListaEjercicios.class);
-                String tipo = cabecera.getNombre();
-                String nivel = subCabecera.getNombre();
-                if(idioma.equals("en") || idioma.equals("es")){
-                    switch (cabecera.getNombre()){
-                        case "Mate":
-                            tipo = "Jaque Mate";
-                            break;
-                        case "Double attack":
-                            tipo = "Ataque Doble";
-                            break;
-                        case "Nailed":
-                            tipo = "Clavada";
-                            break;
-                        case "Elimination of Defense":
-                            tipo = "Eliminacion de la Defensa";
-                            break;
-                        case "X-rays":
-                            tipo = "Rayos X";
-                            break;
-                        case "Eliminación de la Defensa":
-                            tipo = "Eliminacion de la Defensa";
-                            break;
-
-                    }
-
-                    switch (subCabecera.getNombre()){
-                        case "Begginer":
-                            nivel = "Facil";
-                            break;
-                        case "Intermediate":
-                            nivel = "Medio";
-                            break;
-                        case "Advanced":
-                            nivel = "Dificil";
-                            break;
-
-                        case "Fácil":
-                            nivel = "Facil";
-                            break;
-                        case "Difícil":
-                            nivel = "Dificil";
-                            break;
-                    }
-                }
+               // ChildInfo subCabecera =  cabecera.getSubmenus().get(childPosition);
 
 
-                i.putExtra("tipo",tipo);
-                i.putExtra("nivel",nivel);
-                startActivity(i);
-                return true;
+                return false;
             }
         });
         //Evento Onclick de las Cabeceras
@@ -163,6 +186,7 @@ public class ListadoMenu extends AppCompatActivity{
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 //Obtiene la cabecera del grupo
+                posicion = groupPosition;
                 //InformacionGrupo cabecera = listaGrupos.get(groupPosition);
                     agruparGrupos(groupPosition);
                     //expandirGrupos(groupPosition);
@@ -211,21 +235,11 @@ public class ListadoMenu extends AppCompatActivity{
      * Inicializa los datos
      */
     private void cargarDatos(){
-        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_facil),R.drawable.ic_facil);
-        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_medio),R.drawable.ic_medio);
-        añadirSubmenu(getString(R.string.jaque),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
-        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_facil),R.drawable.ic_facil);
-        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_medio),R.drawable.ic_medio);
-        añadirSubmenu(getString(R.string.ataque),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
-        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_facil),R.drawable.ic_facil);
-        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_medio),R.drawable.ic_medio);
-        añadirSubmenu(getString(R.string.clavada),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
-        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_facil),R.drawable.ic_facil);
-        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_medio),R.drawable.ic_medio);
-        añadirSubmenu(getString(R.string.defensa),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
-        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_facil),R.drawable.ic_facil);
-        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_medio),R.drawable.ic_medio);
-        añadirSubmenu(getString(R.string.rayos),getString(R.string.nivel_dificil),R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.jaque),R.drawable.ic_facil,R.drawable.ic_medio,R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.ataque),R.drawable.ic_facil,R.drawable.ic_medio,R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.clavada),R.drawable.ic_facil,R.drawable.ic_medio,R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.defensa),R.drawable.ic_facil,R.drawable.ic_medio,R.drawable.ic_dificil);
+        añadirSubmenu(getString(R.string.rayos),R.drawable.ic_facil,R.drawable.ic_medio,R.drawable.ic_dificil);
 
     }
 
@@ -233,11 +247,10 @@ public class ListadoMenu extends AppCompatActivity{
     /**
      * Añade los datos
      * @param grupo Grupo al que pertenece
-     * @param nombre nombre
      * @param imagen imagen
      * @return la posición del grupo
      */
-    private int añadirSubmenu(String grupo, String nombre,int imagen){
+    private int añadirSubmenu(String grupo, int imagen,int imagen2,int imagen3){
 
         int posicion = 0;
 
@@ -259,9 +272,7 @@ public class ListadoMenu extends AppCompatActivity{
 
         //Crea un nuevo submenu y lo añade al grupo
         ChildInfo submenu = new ChildInfo();
-        submenu.setImagen(imagen);
-        //submenu .setTexto(String.valueOf(cantidad));
-        submenu .setNombre(nombre);
+
         submenus.add(submenu);
         cabecera.setSubmenus(submenus);
 
@@ -278,6 +289,9 @@ public class ListadoMenu extends AppCompatActivity{
 
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String idioma = pre.getString("idioma", "es");
+                Lenguaje.setLocale(ListadoMenu.this, idioma); // Inicializa el idioma
                 finishAffinity();
             }
         });

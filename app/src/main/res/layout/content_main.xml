@@ -26,7 +26,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver"
+        android:text="@string/botonVolver"
         android:onClick="volver"
         android:fontFamily="cursive"
         android:background="@null"

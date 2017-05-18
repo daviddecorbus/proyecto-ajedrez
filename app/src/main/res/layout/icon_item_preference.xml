@@ -5,7 +5,6 @@
     android:paddingBottom="6dp"
     android:paddingLeft="6dp"
     android:paddingRight="6dp"
-    android:background="#fff"
     android:paddingTop="6dp">
 
     <!--     android:paddingLeft="72dp" -->

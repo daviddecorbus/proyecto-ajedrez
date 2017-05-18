@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
+import static com.telefonica.first.tableroprueba.TableroEjercicio.dpi;
+
 public class AdaptadorMenu extends BaseExpandableListAdapter {
 
     private Context contexto;
@@ -43,12 +46,22 @@ public class AdaptadorMenu extends BaseExpandableListAdapter {
         }
 
         //Añade una imagen
-        ImageView imagen = (ImageView) view.findViewById(R.id.image);
-        imagen.setImageResource(informacionSubmenu.getImagen());
+        ImageView imgFacil = (ImageView) view.findViewById(R.id.imgFacil);
+        imgFacil.getLayoutParams().height = ancho/4;
+        imgFacil.setAdjustViewBounds(true);
 
-        //Añade un texto
-        TextView nombre = (TextView) view.findViewById(R.id.childItem);
-        nombre.setText(informacionSubmenu.getNombre().trim());
+
+        ImageView imgMedio = (ImageView) view.findViewById(R.id.imgMedio);
+        imgMedio.getLayoutParams().height = ancho/4;
+        imgMedio.setAdjustViewBounds(true);
+
+        ImageView imgDificil = (ImageView) view.findViewById(R.id.imgDificil);
+        imgDificil.getLayoutParams().height = ancho/4;
+        imgDificil.setAdjustViewBounds(true);
+
+        ImageView imgVacio = (ImageView) view.findViewById(R.id.imgVacio);
+        imgVacio.getLayoutParams().height = ancho/4;
+        imgVacio.setAdjustViewBounds(true);
 
         return view;
     }
@@ -89,7 +102,7 @@ public class AdaptadorMenu extends BaseExpandableListAdapter {
         //Añade la cabecera de los Ménus
         TextView cabeceraMenu = (TextView) view.findViewById(R.id.cabeceraMenu);
         cabeceraMenu.setText(cabecera.getNombre().trim());
-
+        cabeceraMenu.setTextSize(TamañoLetra.tamañoLetraListadoMenu(ancho,dpi));
         return view;
     }
 

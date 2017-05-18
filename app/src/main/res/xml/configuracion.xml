@@ -37,7 +37,7 @@
             <ListPreference
                 android:entries="@array/idioma"
                 android:entryValues="@array/idioma_valor"
-                android:defaultValue="true"
+                android:defaultValue="es"
                 android:key="idioma"
                 android:summary="@string/idioma_descripcion"
                 android:title="@string/idioma_titulo" />
@@ -56,7 +56,7 @@
     <PreferenceScreen
         android:key="sugerencia"
         android:summary=""
-        android:icon="@drawable/ic_settings_help"
+        android:icon="@android:drawable/ic_menu_help"
         android:title="@string/sugerencia" />
     <PreferenceScreen
         android:key="cerrar"

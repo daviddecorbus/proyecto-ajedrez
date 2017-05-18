@@ -2,27 +2,36 @@
 
 package com.telefonica.first.tableroprueba;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -93,9 +102,9 @@ public class TableroEjercicio extends AppCompatActivity {
         peonCambioBlancas.setVisibility(View.INVISIBLE);
         tableroVisual = (TableLayout) findViewById(R.id.tablero); //Inicializa el tablero visual
         recuadro = (ImageView) findViewById(R.id.imagerojo); //Cargar el recuadro del tablero
-        recuperarDatos(); //Recupera los datos
         Ejercicio ejer = (Ejercicio) getIntent().getSerializableExtra("ejercicio");
         ejercicio = ejer;
+        recuperarDatos(); //Recupera los datos
         cargarEjercicio(ejercicio); //Recupera los datos del tablero
         tamañoTabla(); // Ajusta el tablero
         pintarTablero(); //Pinta las piezas
@@ -141,12 +150,18 @@ public class TableroEjercicio extends AppCompatActivity {
         recuadro.setImageResource(R.drawable.rojo);
         switch (colorTablero){
             case "ic_azul_claro":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#1454a1\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                cambiarTituloColor(R.color.colorAzulClaro);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAzulClaro)));
                 recuadro.setImageResource(R.drawable.borde_azul_claro);
                 if(coordenadas) tableroVisual.setBackgroundResource(R.drawable.tablero_azul_claro2);
                 else tableroVisual.setBackgroundResource(R.drawable.tablero_azul_claro);
                 break;
             case "ic_azul_oscuro":
+
+                cambiarTituloColor(R.color.colorAzulOscuro);
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
                 recuadro.setImageResource(R.drawable.borde_azul_oscuro);
                 tableroVisual.setBackgroundResource(R.drawable.tableroazuloscuro);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAzulOscuro)));
@@ -155,6 +170,9 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableroazuloscuro);
                 break;
             case "ic_azul_turquesa":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
+                cambiarTituloColor(R.color.colorturquesa);
                 recuadro.setImageResource(R.drawable.borde_azul_turquesa);
                 tableroVisual.setBackgroundResource(R.drawable.tableroazulturquesa);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorturquesa)));
@@ -162,6 +180,9 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableroazulturquesa);
                 break;
             case "ic_amarillo":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#1454a1\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
+                cambiarTituloColor(R.color.colorAmarillo);
                 recuadro.setImageResource(R.drawable.borde_amarillo);
                 tableroVisual.setBackgroundResource(R.drawable.tableroamarillo);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAmarillo)));
@@ -169,6 +190,9 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableroamarillo);
                 break;
             case "ic_morado":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
+                cambiarTituloColor(R.color.colorMorado);
                 recuadro.setImageResource(R.drawable.borde_morado);
                 tableroVisual.setBackgroundResource(R.drawable.tableromorado);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorMorado)));
@@ -176,6 +200,10 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableromorado);
                 break;
             case "ic_naranja":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
+                cambiarTituloColor(R.color.colorNaranja);
+                getResources().getColor(R.color.colorNaranja);
                 recuadro.setImageResource(R.drawable.borde_naranja);
                 tableroVisual.setBackgroundResource(R.drawable.tableronaranja);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorNaranja)));
@@ -184,6 +212,9 @@ public class TableroEjercicio extends AppCompatActivity {
                 break;
 
             case "ic_rosa_oscuro":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
+                cambiarTituloColor(R.color.colorRosa);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRosa)));
                 tableroVisual.setBackgroundResource(R.drawable.tablerorosaoscuro);
                 recuadro.setImageResource(R.drawable.borde_rosa_oscuro);
@@ -192,6 +223,9 @@ public class TableroEjercicio extends AppCompatActivity {
 
                 break;
             case "ic_rosa":
+                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+
+                cambiarTituloColor(R.color.colorRosaPalo);
                 recuadro.setImageResource(R.drawable.borde_rosa);
                 tableroVisual.setBackgroundResource(R.drawable.tablero_rosa);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRosaPalo)));
@@ -205,6 +239,7 @@ public class TableroEjercicio extends AppCompatActivity {
 
         }
     }
+
 
     /**
      * Rellena el Array Multidimensional con las piezas
@@ -269,6 +304,19 @@ public class TableroEjercicio extends AppCompatActivity {
                 }
 
             }
+        }
+    }
+
+
+    /**
+     * Cambia el titulo del color de la barra de estado
+     * @param color color
+     */
+    private void cambiarTituloColor(int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), color));
         }
     }
 
@@ -436,6 +484,7 @@ public class TableroEjercicio extends AppCompatActivity {
      * @param data Datos
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         switch (requestCode) {
 
             case CONFIGURACION:
@@ -443,7 +492,14 @@ public class TableroEjercicio extends AppCompatActivity {
                     //Devuelve valores de Preferencia
                    // boolean guia = data.getExtras().getBoolean("guiaActivada");
                     recuperarDatos();
-                    tableroPiezas.cargarTablero(ejercicio.getTablero(),nombreGuia); //Carga el tablero
+                    tableroPiezas.cargarTablero(ejercicio.getTablero(), nombreGuia); //Carga el tablero
+                    //si ya hay una pieza seleccionada recupera su posición y la selecciona con la nueva configuración
+                    if(turnoResaltado) {
+                        colorPiezaSeleccionada = tableroPiezas.getPiezas()[xFichaInicial][yFichaInicial].getColor();//guarda el color de la pieza seleccionada
+                        tableroPiezas.getPiezas()[xFichaInicial][yFichaInicial].movimiento(); //rasalta las casillas a las que puede mover
+                        idFicha = tableroPiezas.getPiezas()[xFichaInicial][yFichaInicial].getImagen(); //Guarda el id de la pieza
+                    }
+                    pintarTablero(); //Pinta el tablero
                 }
                 break;
 
@@ -484,6 +540,7 @@ public class TableroEjercicio extends AppCompatActivity {
         }
         else if (id == R.id.action_help){
             if(contadorMovimientos<ejercicio.getCantidadMovimientos() && turnoColor.equalsIgnoreCase(ejercicio.getColorInicio())){
+                tableroPiezas.desresaltarTodos(); //lo primero desresaltamos todas las piezas para que no se marquen dos piezas
                 ayuda++;
                 movimiento = ejercicio.getMovimientos()[contadorMovimientos];
                 String[] cadena = movimiento.split("-");
@@ -496,18 +553,41 @@ public class TableroEjercicio extends AppCompatActivity {
                 yFichaInicial = y; //Posicion inicia y
                 turnoResaltado = true;// guarda si hay alguna pieza seleccionada
                 pintarTablero(); //Pinta el tablero
-                //tableroPiezas.cargarTablero(ejercicio.getTablero(), nombreGuia);
-                //tableroPiezas.cargarTablero(ejercicio.getTablero(),nombreGuia);//volvemos a cargar las imagenes normales
+
             }
             return true;
         }
         else if (id == R.id.action_compartirFoto){
-            compartirTablero();
+                //Si la versión es superior o igual a Masworrd
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!Settings.System.canWrite(this)) {
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE}, 2909);
+                       // item.setEnabled(false);
+
+                }
+            } else { //Si es una versión menor
+                compartirTablero();
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        switch (requestCode) {
+            case 2909: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    compartirTablero();
+                } else {
+                    Log.e("Permission", "Denied");
+                }
+                return;
+            }
+        }
+    }
     /**
      * Crea una Alerta Personalizada
      * @param texto Texto

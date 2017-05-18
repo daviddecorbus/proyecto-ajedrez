@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+    android:background="@drawable/caissa_logofondo2"
+
     >
 
     <ExpandableListView
@@ -12,6 +13,8 @@
         android:layout_height="wrap_content"
         android:divider="#000"
         android:dividerHeight="0dp"
-        android:textColor="#6d6fc9" />
+        android:textColor="#6d6fc9"
+        android:background="#00e90e32"
+        />
 
 </RelativeLayout>

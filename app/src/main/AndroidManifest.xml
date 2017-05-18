@@ -34,7 +34,7 @@
             android:name=".ListadoMenu"
             android:label="@string/tipoEjercicios"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/menuEjercicios" />
         <activity
             android:name=".ListaEjercicios"
             android:label="@string/tipoEjercicios"
