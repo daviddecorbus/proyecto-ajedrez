@@ -11,6 +11,21 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+            <android.support.v7.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/colorPrimaryDark">
+                <TextView
+                    android:id="@+id/textoToolbar"
+                    android:gravity="left"
+                    android:text="Prueba"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.Toolbar>
+
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />

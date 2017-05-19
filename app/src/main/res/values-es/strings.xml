@@ -35,7 +35,7 @@
     <string name="jaque">Jaque Mate</string>
     <string name="ataque">Ataque Doble</string>
     <string name="clavada">Clavada</string>
-    <string name="defensa">Eliminación de la Defensa</string>
+    <string name="defensa">Eliminar Defensa</string>
     <string name="rayos">Rayos X</string>
     <string name="cerrar">Cerrar Sesión</string>
     <string name="salirJuego">¿Quieres salir de Caissa?</string>
@@ -48,11 +48,11 @@
     <string name="registrate">Regístrate</string>
     <string name="email">Correo</string>
     <string name="password">Contraseña</string>
-    <string name="btidentificate">IDENTIFÍCATE</string>
-    <string name="btregistrate">REGÍSTRATE</string>
-    <string name="hinttuemail">Introduce tu correo</string>
-    <string name="hinttupassword">Introduce tu contraseña</string>
-    <string name="hintrepitepassword">Repite la contraseña</string>
+    <string name="btidentificate">&#160;&#160;&#160;IDENTIFÍCATE&#160;&#160;&#160;</string>
+    <string name="btregistrate">&#160;&#160;&#160;REGÍSTRATE&#160;&#160;&#160;</string>
+    <string name="hinttuemail">correo</string>
+    <string name="hinttupassword">contraseña</string>
+    <string name="hintrepitepassword">contraseña</string>
     <string name="erronea">Contraseña Erronea</string>
     <string name="registrado">El email no está registrado</string>
     <string name="usuario">Usuario logueado</string>
@@ -145,17 +145,17 @@
 
     <string name="jaque_facil">Jaque Fácil</string>
     <string name="jaque_medio">Jaque Medio</string>
-    <string name="jaque_dificil">Jaque difícil</string>
-    <string name="ataque_facil">Ataque fácil</string>
-    <string name="ataque_medio">Ataque Medio</string>
-    <string name="ataque_dificil">Ataque Difícil</string>
-    <string name="clavada_facil">Clavada fácil</string>
+    <string name="jaque_dificil">Jaque Difícil</string>
+    <string name="ataque_facil">Doble Fácil</string>
+    <string name="ataque_medio">Doble Medio</string>
+    <string name="ataque_dificil">Doble Difícil</string>
+    <string name="clavada_facil">Clavada Fácil</string>
     <string name="clavada_media">Clavada Medio</string>
     <string name="clavada_dificil">Clavada Difícil</string>
-    <string name="eliminacion_facil">Eliminación fácil</string>
-    <string name="eliminacion_media">Eliminación Medio</string>
-    <string name="eliminacion_dificil">Eliminación Difícil</string>
-    <string name="rayosX_facil">RayosX fácil</string>
+    <string name="eliminacion_facil">Defensa Fácil</string>
+    <string name="eliminacion_media">Defensa Medio</string>
+    <string name="eliminacion_dificil">Defensa Difícil</string>
+    <string name="rayosX_facil">RayosX Fácil</string>
     <string name="rayosX_medio">RayosX Medio</string>
     <string name="rayosX_dificil">RayosX Difícil</string>
 

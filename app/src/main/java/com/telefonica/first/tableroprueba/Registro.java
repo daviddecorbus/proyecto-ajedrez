@@ -99,7 +99,7 @@ public class Registro extends Fragment{
 
         Button boton = (Button) getView().findViewById(R.id.registro);
         boton.setTextSize(TamañoLetra.tamañoLetraBoton(ancho,dpi));
-        boton.getLayoutParams().width=TamañoLetra.tamañoAnchoBoton(ancho,dpi);
+        //boton.getLayoutParams().width=TamañoLetra.tamañoAnchoBoton(ancho,dpi);
         boton.getLayoutParams().height=TamañoLetra.tamañoAltoBoton(ancho,dpi);
 
 
@@ -134,7 +134,7 @@ public class Registro extends Fragment{
                 if(hayConexion()){
                     CrearRegistro com = new CrearRegistro();
                     String parametro = "password=" + password.trim() + "&correo=" + email.trim();
-                    com.execute("http://caissamaister.esy.es/login.php",parametro);
+                    com.execute("http://s682530403.mialojamiento.es/login.php",parametro);
                 }
                 else {
                     Toast.makeText(getActivity(), R.string.conectividad, Toast.LENGTH_SHORT).show();

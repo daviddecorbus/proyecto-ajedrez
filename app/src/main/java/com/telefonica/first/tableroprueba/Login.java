@@ -82,7 +82,7 @@ private String password;
 
         Button boton = (Button) getView().findViewById(R.id.btEnviar);
         boton.setTextSize(TamañoLetra.tamañoLetraBoton(ancho,dpi));
-        boton.getLayoutParams().width=TamañoLetra.tamañoAnchoBoton(ancho,dpi);
+       // boton.getLayoutParams().width=TamañoLetra.tamañoAnchoBoton(ancho,dpi);
         boton.getLayoutParams().height=TamañoLetra.tamañoAltoBoton(ancho,dpi);
 
 
@@ -132,7 +132,7 @@ private String password;
                 if(hayConexion()){
                     CrearLogin com = new CrearLogin();
                     String parametro = "password=" + password.trim() + "&correo=" + email.trim();
-                    com.execute("http://caissamaister.esy.es/login2.php",parametro);
+                    com.execute("http://s682530403.mialojamiento.es/login2.php",parametro);
                 }
                 else {
                     Toast.makeText(getActivity(), R.string.conectividad, Toast.LENGTH_SHORT).show();

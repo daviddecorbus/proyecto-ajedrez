@@ -170,7 +170,7 @@ public class CrearJugadas extends AppCompatActivity {
                                     Toast.makeText(CrearJugadas.this, nivelEjercicio + "", Toast.LENGTH_SHORT).show();
                                     CrearEjercicio com = new CrearEjercicio();
                                     String parametro = "id_nivel=" + nivelEjercicio + "&descripcion=" + descripcionFinal+ "&descripcionIngles=" + descripcionFinal2 + "&movimientos=" + movimientos+ "&color_inicial=" + resultadoColor+"&tablero=" + tableroFinal+"&cantidad_movimientos="+cantidadMovimientos;
-                                    com.execute("http://caissamaister.esy.es/crearEjercicio.php",parametro);
+                                    com.execute("http://s682530403.mialojamiento.es/crearEjercicio.php",parametro);
                                 }
                                 else {
                                     Toast.makeText(CrearJugadas.this, "Debes rellenar la descripción del ejercicio", Toast.LENGTH_SHORT).show();

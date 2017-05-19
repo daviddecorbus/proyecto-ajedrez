@@ -263,7 +263,8 @@ public  String imagenJaque;
             for (int i = (x - 1); i > -1; i--) {
                 if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")))) {
 
                     i = -1;
 
@@ -275,7 +276,8 @@ public  String imagenJaque;
             for (int i = (x + 1); i < 8; i++) {
                 if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")))) {
                     i = 8;
 
                 } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("br") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bq")) {
@@ -285,7 +287,8 @@ public  String imagenJaque;
             for (int i = (y - 1); i > -1; i--) {
                 if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")))) {
                     i = -1;
 
                 } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("br") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bq")) {
@@ -295,7 +298,8 @@ public  String imagenJaque;
             for (int i = (y + 1); i < 8; i++) {
                 if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")))) {
                     i = 8;
 
                 } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("br") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bq")) {
@@ -308,7 +312,8 @@ public  String imagenJaque;
                 if (y < 8) {
                     if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk"))
                             || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")
-                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("bk")))) {
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("bk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("br")))) {
                         i = 8;
                     } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bq")) {
                         return false;
@@ -320,7 +325,8 @@ public  String imagenJaque;
                 if (y1 > -1) {
                     if ((tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wk"))
                             || (tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bp")
-                            || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bk")))) {
+                            || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("br")))) {
                         i = 8;
                     } else if (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bq")) {
                         return false;
@@ -332,7 +338,8 @@ public  String imagenJaque;
                 if (y2 < 8) {
                     if ((tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wk"))
                             || (tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bp")
-                            || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bk")))) {
+                            || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("br")))) {
                         i = 8;
                     } else if (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bq")) {
                         return false;
@@ -344,7 +351,8 @@ public  String imagenJaque;
                 if (y3 > -1) {
                     if ((tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wk"))
                             || (tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bp")
-                            || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bk")))) {
+                            || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("br")))) {
                         i = -1;
                     } else if (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bq")) {
                         return false;
@@ -452,7 +460,8 @@ public  String imagenJaque;
             for (int i = (x - 1); i > -1; i--) {
                 if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wb")))) {
 
                     i = -1;
 
@@ -464,7 +473,8 @@ public  String imagenJaque;
             for (int i = (x + 1); i < 8; i++) {
                 if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wb")))) {
                     i = 8;
 
                 } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wr") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wq")) {
@@ -474,7 +484,8 @@ public  String imagenJaque;
             for (int i = (y - 1); i > -1; i--) {
                 if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wb")))) {
                     i = -1;
 
                 } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wr") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wq")) {
@@ -484,7 +495,8 @@ public  String imagenJaque;
             for (int i = (y + 1); i < 8; i++) {
                 if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wb")))) {
                     i = 8;
 
                 } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wr") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wq")) {
@@ -497,7 +509,8 @@ public  String imagenJaque;
                 if (y < 8) {
                     if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk"))
                             || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wp")
-                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("wk")))) {
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("wk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wr")))) {
                         i = 8;
                     } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wq")) {
                         return false;
@@ -509,7 +522,8 @@ public  String imagenJaque;
                 if (y1 > -1) {
                     if ((tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bk"))
                             || (tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wp")
-                            || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wk")))) {
+                            || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wr")))) {
                         i = 8;
                     } else if (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wq")) {
                         return false;
@@ -521,7 +535,8 @@ public  String imagenJaque;
                 if (y2 < 8) {
                     if ((tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bk"))
                             || (tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wp")
-                            || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wk")))) {
+                            || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wk")
+                            || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wr")))) {
                         i = 8;
                     } else if (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wq")) {
                         return false;
@@ -533,7 +548,8 @@ public  String imagenJaque;
                 if (y3 > -1) {
                     if ((tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bk"))
                             || (tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wp")
-                            || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wk")))) {
+                            || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wk")
+                             || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wr")))) {
                         i = -1;
                     } else if (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wq")) {
                         return false;
@@ -649,7 +665,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
         for (int i = (x - 1); i > -1; i--) {
             if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk"))
                     || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")
-                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")))) {
+                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bb")))) {
 
                 i = -1;
 
@@ -661,7 +678,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
         for (int i = (x + 1); i < 8; i++) {
             if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk"))
                     || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")
-                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")))) {
+                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk")
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bb")))) {
                 i = 8;
 
             } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("br") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bq")) {
@@ -671,7 +689,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
         for (int i = (y - 1); i > -1; i--) {
             if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk"))
                     || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bp")
-                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")))) {
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bb")))) {
                 i = -1;
 
             } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("br") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bq")) {
@@ -681,7 +700,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
         for (int i = (y + 1); i < 8; i++) {
             if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk"))
                     || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bp")
-                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")))) {
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk")
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bb")))) {
                 i = 8;
 
             } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("br") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bq")) {
@@ -694,7 +714,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
             if (y < 8) {
                 if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("br")))) {
                     i = 8;
                 } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bq")) {
                     return false;
@@ -706,7 +727,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
             if (y1 > -1) {
                 if ((tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("br")))) {
                     i = 8;
                 } else if (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bq")) {
                     return false;
@@ -718,7 +740,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
             if (y2 < 8) {
                 if ((tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("br")))) {
                     i = 8;
                 } else if (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bq")) {
                     return false;
@@ -730,7 +753,8 @@ public static boolean revisarJaqueBlanco(int x, int y) {
             if (y3 > -1) {
                 if ((tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("blanco") && !tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wk"))
                         || (tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("negro") && (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bp")
-                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bk")))) {
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("br")))) {
                     i = -1;
                 } else if (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bb") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bq")) {
                     return false;
@@ -844,7 +868,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
         for (int i = (x - 1); i > -1; i--) {
             if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk"))
                     || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wp")
-                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")))) {
+                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")
+                    || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wb")))) {
 
                 i = -1;
 
@@ -856,7 +881,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
         for (int i = (x + 1); i < 8; i++) {
             if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk"))
                     || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wp")
-                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")))) {
+                    || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wk")
+                    || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wb")))) {
                 i = 8;
 
             } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wr") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wq")) {
@@ -866,7 +892,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
         for (int i = (y - 1); i > -1; i--) {
             if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk"))
                     || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wp")
-                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")))) {
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")
+                    || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wb")))) {
                 i = -1;
 
             } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wr") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wq")) {
@@ -876,7 +903,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
         for (int i = (y + 1); i < 8; i++) {
             if ((tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("bk"))
                     || (tableroPiezas.getPiezas()[x][i].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wp")
-                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")))) {
+                    || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wk")
+                    || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wb")))) {
                 i = 8;
 
             } else if (tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wr") || tableroPiezas.getPiezas()[x][i].getImagen().equalsIgnoreCase("wq")) {
@@ -889,7 +917,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
             if (y < 8) {
                 if ((tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[i][y].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][x].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wr")))) {
                     i = 8;
                 } else if (tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y].getImagen().equalsIgnoreCase("wq")) {
                     return false;
@@ -901,7 +930,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
             if (y1 > -1) {
                 if ((tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[i][y1].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wr")))) {
                     i = 8;
                 } else if (tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y1].getImagen().equalsIgnoreCase("wq")) {
                     return false;
@@ -913,7 +943,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
             if (y2 < 8) {
                 if ((tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[i][y2].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wr")))) {
                     i = 8;
                 } else if (tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y2].getImagen().equalsIgnoreCase("wq")) {
                     return false;
@@ -925,7 +956,8 @@ public static boolean revisarJaqueNegro(int x, int y) {
             if (y3 > -1) {
                 if ((tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("negro") && !tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("bk"))
                         || (tableroPiezas.getPiezas()[i][y3].getColor().equalsIgnoreCase("blanco") && (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wp")
-                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wk")))) {
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wn") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wk")
+                        || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wr")))) {
                     i = -1;
                 } else if (tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wb") || tableroPiezas.getPiezas()[i][y3].getImagen().equalsIgnoreCase("wq")) {
                     return false;

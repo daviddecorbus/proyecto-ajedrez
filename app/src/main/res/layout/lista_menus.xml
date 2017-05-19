@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="#000"
+        android:layout_marginTop="30dp"
         android:dividerHeight="0dp"
         android:textColor="#6d6fc9"
         android:background="#00e90e32"

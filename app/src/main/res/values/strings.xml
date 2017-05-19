@@ -32,7 +32,7 @@
     <string name="ataque">Double attack</string>
     <string name="clavada">Nailed</string>
     <string name="defensa">Defense Elimination</string>
-    <string name="rayos">X-rays</string>
+    <string name="rayos">X-ray</string>
     <string name="nivel_facil">Begginer</string>
     <string name="nivel_medio">Intermediate</string>
     <string name="nivel_dificil">Advanced</string>
@@ -43,25 +43,25 @@
     <string name="si">Yes</string>
     <string name="no">No</string>
 
-    <string name="identificate">Log in</string>
-    <string name="registrate">Sign up</string>
+    <string name="identificate">&#160;&#160;&#160;Log in&#160;&#160;&#160;</string>
+    <string name="registrate">&#160;&#160;&#160;Sign up&#160;&#160;&#160;</string>
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="btidentificate">LOG IN</string>
     <string name="btregistrate">SIGN UP</string>
-    <string name="hinttupassword">Introduce your password, please</string>
-    <string name="hintrepitepassword">Repeat your password again, please</string>
-    <string name="hinttuemail">Introduce your email address, please</string>
+    <string name="hinttupassword">password</string>
+    <string name="hintrepitepassword">password</string>
+    <string name="hinttuemail">email address</string>
 
-    <string name="erronea">Wrong Password, please introduce it again</string>
+    <string name="erronea">Wrong Password, please enter it again</string>
     <string name="registrado">E-mail address not found</string>
     <string name="usuario">Log in user</string>
     <string name="error2">There was an internal mistake</string>
-    <string name="falta_contraseña">Introduce your password, please</string>
-    <string name="falta_correo">Introduce a correct E-mail address, please</string>
+    <string name="falta_contraseña">Enter your password, please</string>
+    <string name="falta_correo">Enter a correct E-mail address, please</string>
     <string name="conectividad">You are not connected any network</string>
-    <string name="repite_contraseña">Introduce a correct password, please</string>
-    <string name="email_valido">Introduce a correct E-mail address, please</string>
+    <string name="repite_contraseña">Enter a correct password, please</string>
+    <string name="email_valido">Enter a correct E-mail address, please</string>
     <string name="email_registrado">This E-mail address is already signed up</string>
     <string name="registro_realizado">Sign up already done</string>
     <string name="email2">E-mail address and password already signed up</string>
@@ -92,34 +92,36 @@
         <item>ic_azul_claro</item>
         <item>ic_amarillo</item>
         <item>ic_azul_oscuro</item>
+        <item>ic_rosa_oscuro</item>
         <item>ic_azul_turquesa</item>
         <item>ic_morado</item>
         <item>ic_naranja</item>
         <item>ic_rosa</item>
-        <item>ic_rosa_oscuro</item>
 
     </string-array>
 
 
     <string-array name="colores">
-        <item>White</item>
-        <item>Black</item>
+        <item>Blanco</item>
+        <item>Negro</item>
     </string-array>
+
 
     <string-array name="niveles">
-        <item>Easy</item>
-        <item>Medium</item>
-        <item>Difficult</item>
+        <item>Facil</item>
+        <item>Medio</item>
+        <item>Dificil</item>
     </string-array>
-
 
     <string-array name="tipo">
-        <item>Checkemate</item>
-        <item>Double attack</item>
-        <item>Nailed</item>
-        <item>Defense Elimination</item>
-        <item>X-rays</item>
+        <item>Jaque Mate</item>
+        <item>Ataque Doble</item>
+        <item>Clavada</item>
+        <item>Eliminacion de la Defensa</item>
+        <item>Rayos X</item>
     </string-array>
+
+
 
     <string-array name="frasesFallo">
         <item>Could you do it better?</item>
@@ -147,15 +149,15 @@
     <string name="jaque_facil">Mate Begginer</string>
     <string name="jaque_medio">Mate Intermediate</string>
     <string name="jaque_dificil">Mate Advanced</string>
-    <string name="ataque_facil">Double attack Begginer</string>
-    <string name="ataque_medio">Double attack Intermediate</string>
-    <string name="ataque_dificil">Double attack Advanced</string>
+    <string name="ataque_facil">Double Begginer</string>
+    <string name="ataque_medio">Double Intermediate</string>
+    <string name="ataque_dificil">Double Advanced</string>
     <string name="clavada_facil">Nailed Begginer</string>
     <string name="clavada_media">Nailed Intermediate</string>
     <string name="clavada_dificil">Nailed Advanced</string>
-    <string name="eliminacion_facil">Defense Elimination Begginer</string>
-    <string name="eliminacion_media">Defense Elimination Intermediate</string>
-    <string name="eliminacion_dificil">Defense Elimination Advanced</string>
+    <string name="eliminacion_facil">Defense Begginer</string>
+    <string name="eliminacion_media">Defense Intermediate</string>
+    <string name="eliminacion_dificil">Defense Advanced</string>
     <string name="rayosX_facil">X-Ray Begginer</string>
     <string name="rayosX_medio">X-Ray Intermediate</string>
     <string name="rayosX_dificil">X-Ray Advanced</string>

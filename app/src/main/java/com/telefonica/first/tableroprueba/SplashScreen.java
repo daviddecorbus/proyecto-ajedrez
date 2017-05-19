@@ -11,7 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import static com.telefonica.first.tableroprueba.TableroEjercicio.ancho;
 import static com.telefonica.first.tableroprueba.TableroEjercicio.largo;
@@ -19,6 +22,7 @@ import static com.telefonica.first.tableroprueba.TableroEjercicio.largo;
 public class SplashScreen extends AppCompatActivity {
      Handler handler;
     String correo;
+    int contador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +60,14 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
 
             }
-        }, 1000);
+        }, 2000);
 
+    }
+    public void truco(View v){
+        contador++;
+        if(contador==10){
+            Toast.makeText(this, "Los maister son Bea, Adri, Edu y David", Toast.LENGTH_SHORT).show();
+        }
     }
     public void tamaño() { //define el valor de ancho, largo y dpi de la pantalla del dispositivo
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay(); //Pantalla

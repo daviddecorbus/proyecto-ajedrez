@@ -92,10 +92,10 @@ public class ListadoMenu extends AppCompatActivity{
                 case "Defense Elimination":
                     tipo = "Eliminacion de la Defensa";
                     break;
-                case "X-rays":
+                case "X-ray":
                     tipo = "Rayos X";
                     break;
-                case "Eliminación de la Defensa":
+                case "Eliminar Defensa":
                     tipo = "Eliminacion de la Defensa";
                     break;
 

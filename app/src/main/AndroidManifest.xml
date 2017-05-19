@@ -29,7 +29,7 @@
             android:name=".TableroEjercicio"
             android:label="@string/ejercicio"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ListadoMenu"
             android:label="@string/tipoEjercicios"

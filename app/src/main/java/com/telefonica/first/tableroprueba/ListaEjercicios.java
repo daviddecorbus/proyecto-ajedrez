@@ -88,7 +88,7 @@ public class ListaEjercicios extends AppCompatActivity {
         if(hayConexion()){
             ComunicacionTask com = new ComunicacionTask();
             String parametro = "tipo=" + tipo + "&nivel=" + nivel;
-            com.execute("http://caissamaister.esy.es/peticionEjercicios.php",parametro);
+            com.execute("http://s682530403.mialojamiento.es/peticionEjercicios.php",parametro);
         }
         else {
             Toast.makeText(this, getString(R.string.error_cargar), Toast.LENGTH_SHORT).show();
@@ -117,7 +117,7 @@ public class ListaEjercicios extends AppCompatActivity {
         if(hayConexion()){
             ComunicacionTask com = new ComunicacionTask();
             String parametro = "tipo=" + tipo + "&nivel=" + nivel;
-            com.execute("http://caissamaister.esy.es/peticionEjercicios.php",parametro);
+            com.execute("http://s682530403.mialojamiento.es/peticionEjercicios.php",parametro);
         }
         else {
             Toast.makeText(this, getString(R.string.error_cargar), Toast.LENGTH_SHORT).show();
@@ -214,7 +214,7 @@ public class ListaEjercicios extends AppCompatActivity {
                 }
                 ComunicacionTask2 com = new ComunicacionTask2();
                 String parametro = "tipo=" + tipo + "&nivel=" + nivel + "&correo=" + TableroEjercicio.correo;
-                com.execute("http://caissamaister.esy.es/peticionEjercicios2.php",parametro);
+                com.execute("http://s682530403.mialojamiento.es/peticionEjercicios2.php",parametro);
             }
             catch(JSONException ex){
                 ex.printStackTrace();

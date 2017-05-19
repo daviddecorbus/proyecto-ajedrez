@@ -10,9 +10,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
-/**
- * Created by David Garrido on 12/05/2017.
- */
 
 public class GrabarPartida extends AsyncTask<String, Void,String> {
 

@@ -84,6 +84,7 @@ public class TableroEjercicio extends AppCompatActivity {
     protected String [] frasesFallo;
     protected String [] frasesAcierto;
     public static HashMap<Integer,String> tipoNivel = new HashMap<>();
+    private TextView textoToolbar;
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -94,7 +95,11 @@ public class TableroEjercicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         resaltado = false;
+        setTitle("");
         setContentView(R.layout.activity_main); //Carga el Layout
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        textoToolbar = (TextView) toolbar.findViewById(R.id.textoToolbar);
         //Oculta los fragment
         peonCambioNegras = (FrameLayout) findViewById(R.id.peonCambioNegras);
         peonCambioNegras.setVisibility(View.INVISIBLE);
@@ -150,7 +155,7 @@ public class TableroEjercicio extends AppCompatActivity {
         recuadro.setImageResource(R.drawable.rojo);
         switch (colorTablero){
             case "ic_azul_claro":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#1454a1\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+               textoToolbar.setText(Html.fromHtml("<font color=\"#1454a1\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>"));
                 cambiarTituloColor(R.color.colorAzulClaro);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAzulClaro)));
                 recuadro.setImageResource(R.drawable.borde_azul_claro);
@@ -160,7 +165,7 @@ public class TableroEjercicio extends AppCompatActivity {
             case "ic_azul_oscuro":
 
                 cambiarTituloColor(R.color.colorAzulOscuro);
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 recuadro.setImageResource(R.drawable.borde_azul_oscuro);
                 tableroVisual.setBackgroundResource(R.drawable.tableroazuloscuro);
@@ -170,7 +175,7 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableroazuloscuro);
                 break;
             case "ic_azul_turquesa":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 cambiarTituloColor(R.color.colorturquesa);
                 recuadro.setImageResource(R.drawable.borde_azul_turquesa);
@@ -180,7 +185,7 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableroazulturquesa);
                 break;
             case "ic_amarillo":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#1454a1\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#1454a1\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 cambiarTituloColor(R.color.colorAmarillo);
                 recuadro.setImageResource(R.drawable.borde_amarillo);
@@ -190,7 +195,7 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableroamarillo);
                 break;
             case "ic_morado":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 cambiarTituloColor(R.color.colorMorado);
                 recuadro.setImageResource(R.drawable.borde_morado);
@@ -200,7 +205,7 @@ public class TableroEjercicio extends AppCompatActivity {
                 else tableroVisual.setBackgroundResource(R.drawable.tableromorado);
                 break;
             case "ic_naranja":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 cambiarTituloColor(R.color.colorNaranja);
                 getResources().getColor(R.color.colorNaranja);
@@ -212,7 +217,7 @@ public class TableroEjercicio extends AppCompatActivity {
                 break;
 
             case "ic_rosa_oscuro":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 cambiarTituloColor(R.color.colorRosa);
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRosa)));
@@ -223,7 +228,7 @@ public class TableroEjercicio extends AppCompatActivity {
 
                 break;
             case "ic_rosa":
-                getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
+                textoToolbar.setText((Html.fromHtml("<font color=\"#ffffff\">" + obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel() + "</font>")));
 
                 cambiarTituloColor(R.color.colorRosaPalo);
                 recuadro.setImageResource(R.drawable.borde_rosa);
@@ -256,7 +261,7 @@ public class TableroEjercicio extends AppCompatActivity {
         if(estadoInicial.equalsIgnoreCase("sin-empezar")){
             grabarPartida();
         }
-        setTitle(obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel());//recupera el nivel de l ejercicio y lo vuelca en el title
+       // setTitle(obtenerTipo(ejercicio.getId_nivel())+" "+ejercicio.getNivel());//recupera el nivel de l ejercicio y lo vuelca en el title
 
        }
 
@@ -646,7 +651,7 @@ public class TableroEjercicio extends AppCompatActivity {
     private void grabarPartida(){
         GrabarPartida com = new GrabarPartida();
         String parametro = "correo=" + correo + "&estado=" + estadoInicial + "&idejercicio=" + ejercicio.getId();
-        com.execute("http://caissamaister.esy.es/grabarPartida.php",parametro);
+        com.execute("http://s682530403.mialojamiento.es/grabarPartida.php",parametro);
     }
 
     /**
